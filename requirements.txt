@@ -1,2 +1,12 @@
 fastapi==0.100.1
 uvicorn[standard]==0.23.2
+moviepy
+google-cloud-texttospeech
+google-cloud-aiplatform
+logger
+azure-cognitiveservices-speech
+python-dotenv
+ffmpeg-python
+moviepy
+pydub
+openai
