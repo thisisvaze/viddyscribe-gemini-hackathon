@@ -4,24 +4,36 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 51, 65, 85; /* slate-700 */
+  --background-end-rgb: 51, 65, 85;   /* slate-700 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 51, 65, 85; /* slate-700 */
+    --background-end-rgb: 51, 65, 85;   /* slate-700 */
   }
 }
 
 body {
+  @apply bg-zinc-900 text-white;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+/* New button styles */
+.btn {
+  @apply p-2 rounded text-white cursor-pointer;
+}
+
+.btn-choose-file {
+  @apply bg-white text-gray-700 hover:bg-gray-100 border border-gray-300;
+}
+
+.btn-upload {
+  @apply bg-blue-500 hover:bg-blue-700 disabled:bg-blue-300;
+}
+
+.btn-download {
+  @apply bg-green-500 hover:bg-green-700;
 }

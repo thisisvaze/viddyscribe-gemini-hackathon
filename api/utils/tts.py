@@ -1,7 +1,7 @@
 import google.cloud.texttospeech as tts
 import re
 import logging
-from api.utils.gemini import get_info_from_video  
+ 
 from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, AudioFileClip, CompositeVideoClip, CompositeAudioClip, TextClip
 from google.api_core.exceptions import ResourceExhausted
 import azure.cognitiveservices.speech as speechsdk
@@ -9,9 +9,12 @@ from dotenv import load_dotenv
 import datetime
 import time
 import os
+import requests
 import glob
 import asyncio
-from api.utils.llm_instructions import instructions, instructions_silent_period
+if __name__ != "__main__":
+    from api.utils.llm_instructions import instructions, instructions_silent_period
+    from api.utils.gemini import get_info_from_video 
 # Load environment variables from .env file
 load_dotenv()
 
@@ -21,6 +24,41 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 
 import os
+
+def get_voice_name(voice_model: str):
+    if voice_model == "Azure":
+        return "en-US-NovaMultilingualNeural"
+    elif voice_model == "Google":
+        return "en-US-Journey-O"
+    elif voice_model == "ElevenLabs":
+        return "kPzsL2i3teMYv0FxEYQ6"
+    else:
+        raise ValueError(f"Unsupported voice model: {voice_model}")
+
+
+def text_to_wav_elevenlabs( voice_id: str, text: str, filename: str):
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+    headers = {
+        "Content-Type": "application/json",
+        "xi-api-key": os.getenv("ELEVENLABS_API_KEY")
+    }
+    data = {
+        "text": text,
+        "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.75
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code == 200:
+        with open(filename, "wb") as out:
+            out.write(response.content)
+            print(f'Generated speech saved to "{filename}"')
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
+        raise Exception(f"Failed to generate speech: {response.text}")
+
 
 def text_to_wav(voice_name: str, text: str, filename: str):
     language_code = "-".join(voice_name.split("-")[:2])
@@ -45,13 +83,7 @@ def text_to_wav(voice_name: str, text: str, filename: str):
         out.write(response.audio_content)
         print(f'Generated speech saved to "{filename}"')
 
-def get_voice_name(voice_model: str):
-    if voice_model == "Azure":
-        return "en-US-NovaMultilingualNeural"
-    elif voice_model == "Google":
-        return "en-US-Journey-O"
-    else:
-        raise ValueError(f"Unsupported voice model: {voice_model}")
+
     
 async def text_to_wav_azure(voice_name: str, text: str, filename: str):
     speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), region=os.environ.get('SPEECH_REGION'))
@@ -83,13 +115,27 @@ async def get_audio_desc_util(video_path):
     response_audio_desc = await get_info_from_video(video_path, instructions)
     return response_audio_desc
 
-async def generate_wav_files_from_response(response_body: dict, voice_name: str):
+async def tts_utility(model_name, text, filename):
+    voice = get_voice_name(model_name)
+    if model_name == "Azure":
+        return text_to_wav_azure( voice, text, filename)
+    elif model_name == "Google":
+        return text_to_wav( voice, text, filename)
+    elif model_name == "ElevenLabs":
+        return text_to_wav_elevenlabs( voice, text, filename)
+    
+
+async def generate_wav_files_from_response(response_body: dict, model_name: str):
     description = response_body["description"]
-    print("HERE "+ description)
     # Updated regex pattern to handle both M:SS.sss and MM:SS.sss formats
     pattern = re.compile(r'\[(\d{1,2}:\d{2}\.\d{3})\] (.+)')
     matches = pattern.findall(description)
     logging.info(f"Found matches: {matches}")
+
+    # Trim to the first 20 descriptions if there are more than 20
+    # if len(matches) > 10:
+    #     matches = matches[:10]
+    #     logging.info("Trimmed matches to the first 20 descriptions.")
 
     if not matches:
         logging.error("No matches found in the description.")
@@ -103,7 +149,7 @@ async def generate_wav_files_from_response(response_body: dict, voice_name: str)
         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
         
         try:
-            await text_to_wav_azure(voice_name, text, filename)
+            await tts_utility(model_name, text, filename)
         except Exception as e:
             logging.error(f"Error generating WAV file: {e}")
             raise
@@ -135,13 +181,11 @@ async def generate_wav_files_from_response(response_body: dict, voice_name: str)
 
 
 async def create_final_video(video_path: str, response_body: dict, output_path: str, voice_model):
-    response_audio_timestamps = await generate_wav_files_from_response(response_body, get_voice_name(voice_model))
+    response_audio_timestamps = await generate_wav_files_from_response(response_body, voice_model)
     # Ensure response_audio_timestamps is generated
     if not response_audio_timestamps:
         logging.error("Failed to generate response audio timestamps")
         raise ValueError("Failed to generate response audio timestamps")
-
-    # ... existing code ...
 
     try:
         video = VideoFileClip(video_path)
@@ -233,12 +277,12 @@ async def create_final_video(video_path: str, response_body: dict, output_path: 
     final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
 
     print(f"Final video created successfully. Duration: {final_clip.duration} seconds")
-# ... existing code ...
-# Sample response body
 
-async def main():
-    # Path to a sample video file
-    video_path = "temp/inp_new_test.mp4"
+
+
+
+
+async def run_final(video_path):
     # Output path for the final video
     output_path = "temp/output_video.mp4"
 
@@ -261,10 +305,12 @@ async def main():
         logging.error(f"Error loading video: {e}")
 
     # # Call the function
-    await create_final_video(video_path, response_body, output_path, "Azure")
+    await create_final_video(video_path, response_body, output_path, "ElevenLabs")
 
     
 if __name__ == "__main__":
-    asyncio.run(main())
+    # Path to a sample video file
+    video_path = "temp/inp_new_test.mp4"
+    asyncio.run(run_final())
         
     

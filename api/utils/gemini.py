@@ -6,6 +6,7 @@ from fastapi import UploadFile, File  # Import FastAPI components
 import time 
 import warnings
 
+
 # Suppress specific warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="moviepy")
 
@@ -25,7 +26,7 @@ async def get_info_from_video(file_path, inst):
     )
     generation_config = {
         "max_output_tokens": 8192,
-        "temperature": 0.7,
+        "temperature": 0.9,
         "top_p": 0.95,
     }
     safety_settings = {
@@ -51,6 +52,17 @@ async def get_info_from_video(file_path, inst):
     end_time = time.time()  # End time measurement
     time_taken = end_time - start_time  # Calculate time taken
     print(f"Time taken for response: {time_taken} seconds")  # Print time taken
-    print({"description": result})
+    print({"Gemini response": result})
 
     return {"description": result}
+
+# Add a main function to test the get_info_from_video function
+if __name__ == "__main__":
+    from llm_instructions import instructions
+    import asyncio
+
+    file_path = "./temp/inp_new_test.mp4"  # Replace with your video file path
+    inst = instructions  # Replace with your instruction
+
+    # Run the async function
+    asyncio.run(get_info_from_video(file_path, inst))

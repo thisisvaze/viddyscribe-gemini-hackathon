@@ -10,3 +10,4 @@ ffmpeg-python
 moviepy
 pydub
 openai
+requests

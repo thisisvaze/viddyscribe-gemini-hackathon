@@ -60,7 +60,8 @@ instructions = """You are an AI assistant specialized in creating audio descript
 
 Remember, your goal is to enhance the viewing experience for visually impaired audiences by providing clear, timely, and relevant audio descriptions that complement the existing audio without overwhelming the viewer. Always keep the video's primary purpose in mind and tailor your descriptions to support that purpose effectively.
 
-Only provide the timestamp ranges with audio descripitionas shown above. Do not add any other text to your response."""
+Only provide the timestamp with audio descripitionas shown above. Do not add any other text to your response."""
+
 
 instructions_silent_period = """You are an AI assistant specialized in creating audio description timestamps for videos. Your task is to analyze audio and generate precise timestamps for periods without speech. Follow these guidelines:
 
