@@ -4,7 +4,7 @@ from vertexai.generative_models import GenerativeModel, Part, FinishReason
 import vertexai.preview.generative_models as generative_models
 from fastapi import UploadFile, File  # Import FastAPI components
 import time 
-import warnings 
+import warnings
 
 # Suppress specific warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="moviepy")
@@ -51,6 +51,6 @@ async def get_info_from_video(file_path, inst):
     end_time = time.time()  # End time measurement
     time_taken = end_time - start_time  # Calculate time taken
     print(f"Time taken for response: {time_taken} seconds")  # Print time taken
-    print({"Gemini response": result})
+    print({"description": result})
 
     return {"description": result}

@@ -51,12 +51,33 @@ class speechToTextUtilities:
         while not done:
             time.sleep(0.5)
 
-        for word in all_words:
+        sentence = []
+        sentence_start_time = None
+        gap_threshold = 300  # Gap threshold in milliseconds
+
+        for i, word in enumerate(all_words):
             start_time = word['Offset'] / 10000  # Convert to milliseconds
             end_time = start_time + (word['Duration'] / 10000)  # Convert to milliseconds
-            start_time_str = time.strftime('%H:%M:%S', time.gmtime(start_time / 1000)) + f".{int(start_time % 1000):03d}"
-            end_time_str = time.strftime('%H:%M:%S', time.gmtime(end_time / 1000)) + f".{int(end_time % 1000):03d}"
-            transcription_result.append(f"[{start_time_str} - {end_time_str}] {word['Word']}")
+
+            if sentence_start_time is None:
+                sentence_start_time = start_time
+
+            if i > 0:
+                previous_end_time = all_words[i - 1]['Offset'] / 10000 + (all_words[i - 1]['Duration'] / 10000)
+                gap = start_time - previous_end_time
+                if gap > gap_threshold:
+                    sentence_start_time_str = time.strftime('%H:%M:%S', time.gmtime(sentence_start_time / 1000)) + f".{int(sentence_start_time % 1000):03d}"
+                    sentence_end_time_str = time.strftime('%H:%M:%S', time.gmtime(previous_end_time / 1000)) + f".{int(previous_end_time % 1000):03d}"
+                    transcription_result.append(f"[{sentence_start_time_str} - {sentence_end_time_str}] {' '.join(sentence)}")
+                    sentence = []
+                    sentence_start_time = start_time
+
+            sentence.append(word['Word'])
+
+        if sentence:
+            sentence_start_time_str = time.strftime('%H:%M:%S', time.gmtime(sentence_start_time / 1000)) + f".{int(sentence_start_time % 1000):03d}"
+            sentence_end_time_str = time.strftime('%H:%M:%S', time.gmtime(end_time / 1000)) + f".{int(end_time % 1000):03d}"
+            transcription_result.append(f"[{sentence_start_time_str} - {sentence_end_time_str}] {' '.join(sentence)}")
 
         return '\n'.join(transcription_result)
 
