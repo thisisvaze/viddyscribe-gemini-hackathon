@@ -7,8 +7,6 @@ logger
 azure-cognitiveservices-speech
 python-dotenv
 ffmpeg-python
-moviepy
 pydub
-openai
 requests
 elevenlabs
