@@ -1,12 +1,13 @@
 'use client'
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChangeEvent, DragEvent } from "react";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 
 export default function Home() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [downloadUrl, setDownloadUrl] = useState(""); // Add state for download URL
+  const [downloadUrl, setDownloadUrl] = useState("");
+  const [processingStatus, setProcessingStatus] = useState("");
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFile(event.target.files[0]);
@@ -28,42 +29,47 @@ export default function Home() {
     if (!file) return;
 
     setLoading(true);
+    setProcessingStatus("Uploading...");
 
     const formData = new FormData();
     formData.append("file", file);
 
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    // Set a timeout for the Axios request
-    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 seconds timeout
-
     try {
-      const response = await axios.post("/api/generate", formData, {
-        signal: signal,
-        timeout: 60000, // 60 seconds timeout
-      });
+      const response = await axios.post("/api/generate", formData);
 
-      clearTimeout(timeoutId); // Clear the timeout if the request completes in time
-
-      setLoading(false);
-
-      if (response.status === 200) {
-        const outputPath = response.data.output_path;
-        const url = `/api/download?path=${encodeURIComponent(outputPath)}`;
-        setDownloadUrl(url); // Set the download URL
+      if (response.data.status === "processing") {
+        setProcessingStatus("Processing video...");
+        pollVideoStatus(response.data.output_path);
       } else {
-        console.error("Failed to generate video");
+        setLoading(false);
+        console.error("Unexpected response from server");
       }
     } catch (error) {
-      if (axios.isCancel(error)) {
-        console.error("Request timed out");
-      } else {
-        console.error("Failed to generate video", error);
-      }
+      console.error("Failed to start video processing", error);
       setLoading(false);
+      setProcessingStatus("Error: Failed to start processing");
     }
   };
+
+  const pollVideoStatus = useCallback(async (outputPath) => {
+    const pollInterval = setInterval(async () => {
+        try {
+            const response = await axios.get(`/api/video_status?path=${encodeURIComponent(outputPath)}`);
+            if (response.data.status === "completed") {
+                clearInterval(pollInterval);
+                setLoading(false);
+                setProcessingStatus("Video processing completed");
+                setDownloadUrl(`/api/download?path=videos/${encodeURIComponent(outputPath.split('/').pop())}`);
+            } else if (response.data.status === "error") {
+                clearInterval(pollInterval);
+                setLoading(false);
+                setProcessingStatus("Error: Video processing failed");
+            }
+        } catch (error) {
+            console.error("Error polling video status", error);
+        }
+    }, 5000); // Poll every 5 seconds
+}, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -89,8 +95,9 @@ export default function Home() {
         className="mt-4 btn btn-upload" 
         disabled={loading}
       >
-        {loading ? "Creating..." : "Upload and Generate"}
+        {loading ? "Processing..." : "Upload and Generate"}
       </button>
+      {processingStatus && <p className="mt-4">{processingStatus}</p>}
       {downloadUrl && (
         <a 
           href={downloadUrl} 

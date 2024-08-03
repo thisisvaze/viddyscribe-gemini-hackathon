@@ -11,3 +11,4 @@ moviepy
 pydub
 openai
 requests
+elevenlabs
