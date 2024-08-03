@@ -4,15 +4,16 @@ import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
 
 export default function Home() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFile(event.target.files[0]);
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
   };
-
   const handleDrop = useCallback((event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
@@ -51,7 +52,7 @@ export default function Home() {
     }
   };
 
-  const pollVideoStatus = useCallback(async (outputPath) => {
+  const pollVideoStatus = useCallback(async (outputPath: string) => {
     const pollInterval = setInterval(async () => {
         try {
             const response = await axios.get(`/api/video_status?path=${encodeURIComponent(outputPath)}`);
@@ -59,7 +60,8 @@ export default function Home() {
                 clearInterval(pollInterval);
                 setLoading(false);
                 setProcessingStatus("Video processing completed");
-                setDownloadUrl(`/api/download?path=videos/${encodeURIComponent(outputPath.split('/').pop())}`);
+                const fileName = outputPath.split('/').pop() || '';
+                setDownloadUrl(`/api/download?path=videos/${encodeURIComponent(fileName)}`);
             } else if (response.data.status === "error") {
                 clearInterval(pollInterval);
                 setLoading(false);
@@ -78,8 +80,13 @@ export default function Home() {
         className={`p-16 border-2 transition-all border-white/50 border-dashed rounded-lg text-center cursor-pointer text-zinc-100/70 ${file ? 'bg-zinc-700' : 'hover:bg-zinc-800'}`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        onClick={() => document.getElementById('fileInput').click()}
-      >
+        onClick={() => {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput) {
+                fileInput.click();
+            }
+        }}
+    >
         <input 
           id="fileInput"
           type="file" 
@@ -97,7 +104,7 @@ export default function Home() {
       >
         {loading ? "Processing..." : "Upload and Generate"}
       </button>
-      {processingStatus && <p className="mt-4">{processingStatus}</p>}
+      {processingStatus && <p className="text-zinc-100 mt-4">{processingStatus}</p>}
       {downloadUrl && (
         <a 
           href={downloadUrl} 

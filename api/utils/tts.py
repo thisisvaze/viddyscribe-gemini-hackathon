@@ -65,6 +65,67 @@ async def text_to_wav_elevenlabs(voice_id: str, text: str, filename: str):
     
     print(f'Generated speech saved to "{filename}"')
 
+async def generate_wav_files_from_response(response_body: dict, model_name: str):
+    description = response_body["description"]
+    pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
+    matches = pattern.findall(description)
+    logging.info(f"Found matches: {matches}")
+
+    if not matches:
+        logging.error("No matches found in the description.")
+        return []
+
+    timestamp_ranges = []
+
+    tasks = []  # List to hold all the tasks
+
+    for timestamp, text in matches:
+        start_time = timestamp
+        filename = f"{start_time.replace(':', '-')}.wav"
+        logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
+        
+        # Create a task for each text-to-speech generation
+        tasks.append(tts_utility(model_name, text, filename))
+
+    # Run all tasks concurrently
+    await asyncio.gather(*tasks)
+
+    # Check if files are created and handle them
+    for timestamp, text in matches:
+        start_time = timestamp
+        filename = f"{start_time.replace(':', '-')}.wav"
+        
+        max_wait_time = 30
+        wait_interval = 0.5
+        elapsed_time = 0
+
+        while (not os.path.exists(filename) or os.path.getsize(filename) == 0) and elapsed_time < max_wait_time:
+            logging.info(f"Waiting for file {filename} to be created. Elapsed time: {elapsed_time}s")
+            await asyncio.sleep(wait_interval)
+            elapsed_time += wait_interval
+
+        if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+            logging.error(f"Failed to generate WAV file: {filename}")
+            raise Exception(f"Failed to generate WAV file: {filename}")
+
+        audio_clip = AudioFileClip(filename)
+        duration = audio_clip.duration
+
+        try:
+            start_dt = datetime.datetime.strptime(start_time, "%M:%S.%f")
+        except ValueError:
+            start_dt = datetime.datetime.strptime(start_time, "%M:%S")
+
+        end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
+        new_filename = f"{start_time.replace(':', '-')}_to_{end_time}.wav"
+        os.rename(filename, new_filename)
+        logging.info(f"Generated speech saved to \"{new_filename}\"")
+
+        timestamp_ranges.append(f"[{start_time}] - [{end_time}] {text}")
+
+    logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
+    return timestamp_ranges
+
 # def text_to_wav_elevenlabs( voice_id: str, text: str, filename: str):
 #     url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
 #     headers = {
@@ -155,61 +216,63 @@ async def tts_utility(model_name, text, filename):
         return await text_to_wav_elevenlabs(voice, text, filename)  # Add await here
     
 
-async def generate_wav_files_from_response(response_body: dict, model_name: str):
-    description = response_body["description"]
-    # Updated regex pattern to handle M:SS, MM:SS, M:SS.sss, and MM:SS.sss formats
-    pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
-    matches = pattern.findall(description)
-    logging.info(f"Found matches: {matches}")
+# async def generate_wav_files_from_response(response_body: dict, model_name: str):
+#     description = response_body["description"]
+#     # Updated regex pattern to handle M:SS, MM:SS, M:SS.sss, and MM:SS.sss formats
+#     pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
+#     matches = pattern.findall(description)
+#     logging.info(f"Found matches: {matches}")
 
-    if not matches:
-        logging.error("No matches found in the description.")
-        return []
+#     if not matches:
+#         logging.error("No matches found in the description.")
+#         return []
 
-    timestamp_ranges = []
+#     timestamp_ranges = []
 
-    for timestamp, text in matches:
-        start_time = timestamp
-        filename = f"{start_time.replace(':', '-')}.wav"
-        logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
+#     for timestamp, text in matches:
+#         start_time = timestamp
+#         filename = f"{start_time.replace(':', '-')}.wav"
+#         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
         
-        try:
-            await tts_utility(model_name, text, filename)
-        except Exception as e:
-            logging.error(f"Error generating WAV file for text '{text}' at timestamp '{start_time}': {e}")
-            raise
+#         try:
+#             await tts_utility(model_name, text, filename)
+#         except Exception as e:
+#             logging.error(f"Error generating WAV file for text '{text}' at timestamp '{start_time}': {e}")
+#             raise
 
-        max_wait_time = 30
-        wait_interval = 0.5
-        elapsed_time = 0
+#         max_wait_time = 30
+#         wait_interval = 0.5
+#         elapsed_time = 0
 
-        while (not os.path.exists(filename) or os.path.getsize(filename) == 0) and elapsed_time < max_wait_time:
-            logging.info(f"Waiting for file {filename} to be created. Elapsed time: {elapsed_time}s")
-            await asyncio.sleep(wait_interval)
-            elapsed_time += wait_interval
+#         while (not os.path.exists(filename) or os.path.getsize(filename) == 0) and elapsed_time < max_wait_time:
+#             logging.info(f"Waiting for file {filename} to be created. Elapsed time: {elapsed_time}s")
+#             await asyncio.sleep(wait_interval)
+#             elapsed_time += wait_interval
 
-        if not os.path.exists(filename) or os.path.getsize(filename) == 0:
-            logging.error(f"Failed to generate WAV file: {filename}")
-            raise Exception(f"Failed to generate WAV file: {filename}")
+#         if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+#             logging.error(f"Failed to generate WAV file: {filename}")
+#             raise Exception(f"Failed to generate WAV file: {filename}")
 
-        audio_clip = AudioFileClip(filename)
-        duration = audio_clip.duration
+#         audio_clip = AudioFileClip(filename)
+#         duration = audio_clip.duration
 
-        # Handle different timestamp formats
-        try:
-            start_dt = datetime.datetime.strptime(start_time, "%M:%S.%f")
-        except ValueError:
-            start_dt = datetime.datetime.strptime(start_time, "%M:%S")
+#         # Handle different timestamp formats
+#         try:
+#             start_dt = datetime.datetime.strptime(start_time, "%M:%S.%f")
+#         except ValueError:
+#             start_dt = datetime.datetime.strptime(start_time, "%M:%S")
 
-        end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
-        new_filename = f"{start_time.replace(':', '-')}_to_{end_time}.wav"
-        os.rename(filename, new_filename)
-        logging.info(f"Generated speech saved to \"{new_filename}\"")
+#         end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
+#         new_filename = f"{start_time.replace(':', '-')}_to_{end_time}.wav"
+#         os.rename(filename, new_filename)
+#         logging.info(f"Generated speech saved to \"{new_filename}\"")
 
-        timestamp_ranges.append(f"[{start_time}] - [{end_time}] {text}")
+#         timestamp_ranges.append(f"[{start_time}] - [{end_time}] {text}")
 
-    logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
-    return timestamp_ranges
+#     logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
+#     return timestamp_ranges
+
+
 async def create_final_video(video_path: str, response_body: dict, output_path: str, model_name):
     response_audio_timestamps = await generate_wav_files_from_response(response_body, model_name)
     if not response_audio_timestamps:
