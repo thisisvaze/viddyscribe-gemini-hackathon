@@ -7,9 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydub import AudioSegment
 from moviepy.editor import VideoFileClip
 from api.utils.gemini import get_info_from_video  
-from api.utils.tts import create_final_video, run_final
+from api.utils.tts import create_final_video, get_silent_periods_util_whisper, run_final, verify_timestamp_range
 from api.utils.speech_to_text import speechToTextUtilities, Model
-from api.utils.llm_instructions import instructions, instructions_silent_period
+from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
 import uvicorn
 import shutil
 import asyncio
@@ -50,7 +50,9 @@ async def get_silent_periods_util(video_path):
     return response_silent_periods
 
 async def get_audio_desc_util(video_path):
-    response_audio_desc = await get_info_from_video(video_path, instructions)
+    response = await get_info_from_video(video_path, instructions_chain_1)
+    dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response)
+    response_audio_desc = await get_info_from_video(video_path, dynamic_instructions_chain_2)
     return response_audio_desc
 
 @app.get("/api/video_status")
@@ -71,7 +73,7 @@ async def main(video_path, output_path):
         logging.error(f"Error loading video: {e}")
         raise HTTPException(status_code=500, detail=f"Error loading video: {e}")
     response_audio_desc = await get_audio_desc_util(video_path)
-    response_silent_periods = await get_silent_periods_util(video_path)
+    response_silent_periods = await get_silent_periods_util_whisper(video_path)
 
     if not response_audio_desc or not response_silent_periods:
         logging.error("Failed to retrieve audio description or silent periods")
@@ -145,19 +147,35 @@ async def download_file(path: str):
     else:
         logging.error(f"File not found: {file_path}")
         raise HTTPException(status_code=404, detail="File not found")
+    
+
 @app.post("/api/get_silent_periods")
 async def get_silent_periods(file: UploadFile = File(...)):
     video_path = f"temp/{file.filename}"
+
+    os.makedirs("temp", exist_ok=True)
+    with open(video_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
     try:
-        os.makedirs("temp", exist_ok=True)
-        with open(video_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-        
-        response_silent_periods = await get_silent_periods_util(video_path)
-        return response_silent_periods
+        clip = VideoFileClip(video_path)
+        video_duration = clip.duration
+        logging.info(f"Video loaded successfully. Duration: {video_duration} seconds")
+        clip.close()
     except Exception as e:
-        logging.error(f"Unexpected error: {e}")
-        raise HTTPException(status_code=500, detail=f"Error processing video: {e}")
+        logging.error(f"Error loading video: {e}")
+        return
+    response_silent_periods = await get_silent_periods_util_whisper(video_path)
+    print(response_silent_periods)
+    return response_silent_periods
+    #response_silent_periods = await get_silent_periods_util(video_path)
+    # response_body = {
+    # "silent_periods": response_silent_periods["description"]
+    # }
+    # print(response_body)
+    # verified = await verify_timestamp_range(response_body, video_duration)
+    # print(verified)
+    # return verified
+
 
 # @app.post("/api/get_audio_desc")
 # async def get_audio_desc(file: UploadFile = File(...)):

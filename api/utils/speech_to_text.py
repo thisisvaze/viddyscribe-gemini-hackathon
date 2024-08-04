@@ -11,7 +11,7 @@ load_dotenv()
 if __name__ == "__main__":
     from utils.model_configs import Model
 else:
-    from .model_configs import Model
+    from api.utils.model_configs import Model 
 
 class speechToTextUtilities:
     def __init__(self, model):
@@ -24,6 +24,72 @@ class speechToTextUtilities:
         self.speech_config.request_word_level_timestamps()
         self.speech_config.output_format = speechsdk.OutputFormat(1)
         self.speech_config.speech_recognition_model_id = "whisper"
+
+    async def transcribe_with_timestamps_openai(self, audio_file_path):
+        import os
+        from openai import AsyncAzureOpenAI
+        
+        client = AsyncAzureOpenAI(
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
+            api_version="2024-02-01",
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
+        )
+        
+        deployment_id = "whisper"  # This will correspond to the custom name you chose for your deployment when you deployed a model.
+        audio_test_file = audio_file_path
+        
+        result = await client.audio.transcriptions.create(
+            file=open(audio_test_file, "rb"),            
+            model=deployment_id,
+            response_format="srt"
+        )
+        print(result)
+        # Parse the result and reformat silent periods
+        transcription_periods = []
+        silent_periods = []
+        lines = result.split('\n')
+        gap_threshold = 300  # Gap threshold in milliseconds
+
+        for i in range(1, len(lines), 4):
+            if i + 1 < len(lines):
+                start_time, end_time = lines[i].split(' --> ')
+                start_time_ms = self._convert_srt_time_to_ms(start_time)
+                end_time_ms = self._convert_srt_time_to_ms(end_time)
+                transcription_periods.append((start_time_ms, end_time_ms))
+
+        # Handle initial silent period
+        if transcription_periods:
+            first_start_time = transcription_periods[0][0]
+            if first_start_time > gap_threshold:
+                silent_periods.append(f"[{self._format_ms_to_srt_time(0)}] - [{self._format_ms_to_srt_time(first_start_time)}]")
+        for i in range(1, len(transcription_periods)):
+            previous_end_time = transcription_periods[i - 1][1]
+            current_start_time = transcription_periods[i][0]
+            gap = current_start_time - previous_end_time
+            if gap > gap_threshold:
+                silent_periods.append(f"[{self._format_ms_to_srt_time(previous_end_time)}] - [{self._format_ms_to_srt_time(current_start_time)}]")
+
+        # Handle final silent period
+        audio = AudioSegment.from_file(audio_file_path)
+        audio_duration = len(audio)
+        last_end_time = transcription_periods[-1][1]
+        if audio_duration - last_end_time > gap_threshold:
+            silent_periods.append(f"[{self._format_ms_to_srt_time(last_end_time)}] - [{self._format_ms_to_srt_time(audio_duration)}]")
+
+        formatted_periods = '\n'.join(silent_periods)
+        print("OPENAI" + str(formatted_periods))
+        return formatted_periods
+
+    def _convert_srt_time_to_ms(self, srt_time):
+        h, m, s = srt_time.split(':')
+        s, ms = s.split(',')
+        return (int(h) * 3600 + int(m) * 60 + int(s)) * 1000 + int(ms)
+
+    def _format_ms_to_srt_time(self, ms):
+        s, ms = divmod(ms, 1000)
+        m, s = divmod(s, 60)
+        return f"{m:02}:{s:02}.{ms:03}"
+
 
     async def transcribe_with_timestamps(self, audio_file_path):
         audio_input = speechsdk.AudioConfig(filename=audio_file_path)
@@ -99,11 +165,11 @@ class speechToTextUtilities:
             last_word_end_time = all_words[-1]['Offset'] / 10000 + (all_words[-1]['Duration'] / 10000)  # Convert to milliseconds
             if audio_duration - last_word_end_time > gap_threshold:
                 silent_periods.append(str(f"[{time.strftime('%H:%M:%S', time.gmtime(last_word_end_time / 1000))}.{int(last_word_end_time % 1000):03d}] - [{time.strftime('%H:%M:%S', time.gmtime(audio_duration / 1000))}.{int(audio_duration % 1000):03d}]"))
-
-        return {"description": '\n'.join(transcription_result), "silent_periods": '\n'.join(silent_periods)}
+        
+        return '\n'.join(silent_periods)
 
 if __name__ == "__main__":
     # Usage example
     stt_util = speechToTextUtilities(Model.AzureOpenAI)
-    transcription = asyncio.run(stt_util.transcribe_with_timestamps("temp/input_test_panda.mp4"))
+    transcription = asyncio.run(stt_util.transcribe_with_timestamps("./../temp/input_test_panda.mp4"))
     print(transcription)

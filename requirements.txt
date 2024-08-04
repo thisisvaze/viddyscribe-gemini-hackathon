@@ -1,4 +1,15 @@
 fastapi
 uvicorn
+moviepy
+google-cloud-texttospeech
+google-cloud-aiplatform
 logger
+azure-cognitiveservices-speech
+python-dotenv
+ffmpeg-python
+pydub
 requests
+elevenlabs
+python-multipart
+aiofiles
+openai

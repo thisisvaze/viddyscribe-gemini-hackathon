@@ -22,8 +22,16 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Construct the full path to the gckey.json file
+gckey_path = os.path.join(script_dir, "gckey.json")
+
+# Set the environment variable for Google Cloud authentication
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gckey_path
+
 if __name__ != "__main__":
-    from api.utils.llm_instructions import instructions, instructions_silent_period
+    from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
     from api.utils.gemini import get_info_from_video 
     from api.utils.speech_to_text import speechToTextUtilities 
     from api.utils.model_configs import Model
@@ -200,7 +208,9 @@ async def get_silent_periods_util(video_path):
 
 
 async def get_audio_desc_util(video_path):
-    response_audio_desc = await get_info_from_video(video_path, instructions)
+    response = await get_info_from_video(video_path, instructions_chain_1)
+    dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
+    response_audio_desc = await get_info_from_video(video_path, dynamic_instructions_chain_2)
     return response_audio_desc
 
 async def tts_utility(model_name, text, filename):
@@ -407,7 +417,7 @@ async def get_silent_periods_util_whisper(video_path):
     video.export(audio_path, format="wav")
     
     stt_util = speechToTextUtilities(Model.AzureOpenAI)
-    silent_periods = await stt_util.transcribe_with_timestamps(audio_path)
+    silent_periods = await stt_util.transcribe_with_timestamps_openai(audio_path)
     
     return {"description": silent_periods}
 
@@ -416,10 +426,11 @@ async def run_final(video_path, output_path):
     # Get audio description and silent periods
     response_audio_desc = await get_audio_desc_util(video_path)
     ## Get silent period using Gemini
-    response_silent_periods = await get_silent_periods_util(video_path)
+    #response_silent_periods = await get_silent_periods_util(video_path)
 
     ## Get silent period using whisper
-    #response_silent_periods = await get_silent_periods_util_whisper(video_path)
+    response_silent_periods = await get_silent_periods_util_whisper(video_path)
+
     response_body = {
         "description": response_audio_desc["description"],
         "silent_periods": response_silent_periods["description"]
@@ -433,9 +444,9 @@ async def run_final(video_path, output_path):
         logging.error(f"Error loading video: {e}")
         return
 
-    verified_response = await verify_timestamp_range(response_body, video_duration)
+    #verified_response = await verify_timestamp_range(response_body, video_duration)
 
-    print(str(verified_response) + "MODIFIED")
+    #print(str(verified_response) + "MODIFIED")
     # test_response_body = {'description': '[0:02.100] Orange energy streaks through an ornate hallway lined with large lanterns. \n[0:08.250] A panda with a green wooden staff stands among broken lanterns. \n[0:10.100] Three figures are trapped inside one of the lanterns. A crocodile with red scales, a grey rhinoceros, and a white goat. \n[0:12.500] A line of animal warriors emerge from behind the lanterns. A bear, a water buffalo, and a snow leopard, radiating orange energy. \n', 
     #                   'silent_periods': '[00:00.000] - [00:25.140]\n[00:29.040] - [00:34.210]\n[00:36.430] - [00:45.300]\n[00:49.740] - [00:58.080]'}
 
@@ -443,46 +454,52 @@ async def run_final(video_path, output_path):
     #                   'silent_periods': '[00:00.000] - [00:25.140]\n[00:29.040] - [00:34.210]\n[00:36.430] - [00:45.300]\n[00:49.740] - [00:56.000]'}
 
     # # Call the function
-    await create_final_video(video_path, verified_response, output_path, "ElevenLabs")
+    await create_final_video(video_path, response_body, output_path, "ElevenLabs")
 
 async def verify_timestamp_range(response_body, video_duration):
     # Verify and adjust the last timestamp in response_audio_desc
-    pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
-    matches = pattern.findall(response_body["description"])
-    if matches:
-        last_timestamp = matches[-1][0]
-        last_time_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(last_timestamp.split(":"))))
-        if last_time_seconds > video_duration:
-            adjusted_time = video_duration - 0.1
-            adjusted_timestamp = f"{int(adjusted_time // 60)}:{adjusted_time % 60:.3f}"
-            response_body["description"] = re.sub(r'\[\d{1,2}:\d{2}(?:\.\d{3})?\] (.+)$', f'[{adjusted_timestamp}] \\1', response_body["description"])
+    if "description" in response_body:
+        pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
+        matches = pattern.findall(response_body["description"])
+        logging.info(f"Description matches: {matches}")
+        if matches:
+            last_timestamp = matches[-1][0]
+            last_time_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(last_timestamp.split(":"))))
+            if last_time_seconds > video_duration:
+                adjusted_time = video_duration - 0.1
+                adjusted_timestamp = f"{int(adjusted_time // 60)}:{adjusted_time % 60:.3f}"
+                response_body["description"] = re.sub(r'\[\d{1,2}:\d{2}(?:\.\d{3})?\] (.+)$', f'[{adjusted_timestamp}] \\1', response_body["description"])
 
-    # Verify and adjust the last timestamp in response_silent_periods
-    silent_pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] - \[(\d{1,2}:\d{2}(?:\.\d{3})?)\]')
-    silent_matches = silent_pattern.findall(response_body["silent_periods"])
-    if silent_matches:
-        last_silent_start, last_silent_end = silent_matches[-1]
-        last_silent_end_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(last_silent_end.split(":"))))
-        if last_silent_end_seconds > video_duration:
-            adjusted_silent_end = video_duration - 0.1
-            adjusted_silent_timestamp = f"{int(adjusted_silent_end // 60)}:{adjusted_silent_end % 60:.3f}"
-            response_body["silent_periods"] = re.sub(
-                r'\[\d{1,2}:\d{2}(?:\.\d{3})?\] - \[\d{1,2}:\d{2}(?:\.\d{3})?\]$',
-                f'[{last_silent_start}] - [{adjusted_silent_timestamp}]',
-                response_body["silent_periods"]
-            )
+    # Verify and adjust the timestamps in response_silent_periods
+    if "silent_periods" in response_body:
+        silent_pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] - \[(\d{1,2}:\d{2}(?:\.\d{3})?)\]')
+        silent_matches = silent_pattern.findall(response_body["silent_periods"])
+        logging.info(f"Silent periods matches: {silent_matches}")
+        adjusted_silent_periods = []
+
+        for start, end in silent_matches:
+            start_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(start.split(":"))))
+            end_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(end.split(":"))))
+
+            if end_seconds > video_duration:
+                end_seconds = video_duration
+                end = f"{int(end_seconds // 60)}:{end_seconds % 60:.3f}"
+
+            adjusted_silent_periods.append(f"[{start}] - [{end}]")
+
+        response_body["silent_periods"] = "\n".join(adjusted_silent_periods)
     
     # Log the adjusted response body for debugging
     logging.info(f"Adjusted response body: {response_body}")
     
-    return response_body
+    return response_body  # Removed await here as it is not necessary
 
 if __name__ == "__main__":
-    from llm_instructions import instructions, instructions_silent_period
+    from llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
     from gemini import get_info_from_video 
     from speech_to_text import speechToTextUtilities
     # Path to a sample video file
-    video_path = "temp/input_test_panda.mp4"
-    asyncio.run(run_final(video_path, output_path="temp/output_video.mp4"))
-        
-    
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    video_path = os.path.abspath(os.path.join(current_dir, "../../temp/input_test_panda.mp4"))  # Updated path to be relative to the current directory
+    output_path = os.path.abspath(os.path.join(current_dir, "../../temp/output_video.mp4"))  # Updated path to be relative to the current directory
+    asyncio.run(run_final(video_path, output_path))
