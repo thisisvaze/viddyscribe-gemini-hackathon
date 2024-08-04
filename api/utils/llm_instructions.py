@@ -85,7 +85,7 @@ Example output:
 [00:15.750] - [00:18.200]
 [01:05.000] - [01:08.500]
 
-Make sure the end time does not exceed the video length.
+IMPORTANT: Make sure that each of the end time in the no speech period should be atleast 0.5s less than the video length. So if the video length is 17.2s the end time should not exceed 17s.
 
 Only provide the timestamp ranges as shown above, unless context is specifically requested. Do not add any other text to your response."""
 

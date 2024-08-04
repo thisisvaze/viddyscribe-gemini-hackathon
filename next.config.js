@@ -4,26 +4,20 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/api/:path*"
-            : "/api/",
+        destination: "http://127.0.0.1:8001/api/:path*",
       },
       {
         source: "/docs",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/docs"
-            : "/api/docs",
+        destination: "http://127.0.0.1:8001/docs",
       },
       {
         source: "/openapi.json",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/openapi.json"
-            : "/api/openapi.json",
+        destination: "http://127.0.0.1:8001/openapi.json",
       },
     ];
+  },
+  env: {
+    VIDDYSCRIBE_API_KEY: process.env.VIDDYSCRIBE_API_KEY,
   },
 };
 

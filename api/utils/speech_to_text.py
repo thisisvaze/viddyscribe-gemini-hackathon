@@ -8,7 +8,10 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-from api.utils.model_configs import Model
+if __name__ == "__main__":
+    from utils.model_configs import Model
+else:
+    from .model_configs import Model
 
 class speechToTextUtilities:
     def __init__(self, model):

@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "functions": {
+        "api/**": {
+            "excludeFiles": "{.next,*.cache,node_modules,public,app,static,build,coverage}/**"
+        }
+    },
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        }
+    ]
+}

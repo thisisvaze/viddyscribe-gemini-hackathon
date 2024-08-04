@@ -1,23 +1,37 @@
 'use client'
+
+
+
 import { useState, useCallback, useEffect } from "react";
 import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
-
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
+  const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setFile(event.target.files[0]);
+      const selectedFile = event.target.files[0];
+      if (selectedFile.size > MAX_FILE_SIZE) {
+        alert("File size exceeds the 50MB limit. Please choose a smaller file.");
+        return;
+      }
+      setFile(selectedFile);
     }
   };
+
   const handleDrop = useCallback((event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-      setFile(event.dataTransfer.files[0]);
+      const selectedFile = event.dataTransfer.files[0];
+      if (selectedFile.size > MAX_FILE_SIZE) {
+        alert("File size exceeds the 50MB limit. Please choose a smaller file.");
+        return;
+      }
+      setFile(selectedFile);
       event.dataTransfer.clearData();
     }
   }, []);
@@ -31,13 +45,18 @@ export default function Home() {
 
     setLoading(true);
     setProcessingStatus("Uploading...");
+    setDownloadUrl("");
+    const VIDDYSCRIBE_API_KEY = "viddysc-8f6f7d0195efd6a0e11581e0caa26c140347392dee1a18698c7b1dd1fac46cd6"
+
 
     const formData = new FormData();
     formData.append("file", file);
-
     try {
-      const response = await axios.post("/api/generate", formData);
-
+      const response = await axios.post("api/create_video", formData, {
+        headers: {
+          'Authorization': `Bearer ${VIDDYSCRIBE_API_KEY}`
+        }
+      });
       if (response.data.status === "processing") {
         setProcessingStatus("Processing video...");
         pollVideoStatus(response.data.output_path);
@@ -55,13 +74,13 @@ export default function Home() {
   const pollVideoStatus = useCallback(async (outputPath: string) => {
     const pollInterval = setInterval(async () => {
         try {
-            const response = await axios.get(`/api/video_status?path=${encodeURIComponent(outputPath)}`);
+            const response = await axios.get(`api/video_status?path=${encodeURIComponent(outputPath)}`);
             if (response.data.status === "completed") {
                 clearInterval(pollInterval);
                 setLoading(false);
                 setProcessingStatus("Video processing completed");
                 const fileName = outputPath.split('/').pop() || '';
-                setDownloadUrl(`/api/download?path=videos/${encodeURIComponent(fileName)}`);
+                setDownloadUrl(`api/download/?path=videos/${encodeURIComponent(fileName)}`);
             } else if (response.data.status === "error") {
                 clearInterval(pollInterval);
                 setLoading(false);

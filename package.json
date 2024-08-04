@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "fastapi-dev": "pip install -r requirements.txt && python -m uvicorn api.index:app --reload --timeout-keep-alive 120",
+    "fastapi-dev": "pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120",
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start:pm2": "pm2 start npm --name \"nextjs-fastapi\" -- run start:concurrent",
+    "start:concurrent": "concurrently \"npm run start:next\" \"npm run start:fastapi\"",
+    "start:next": "next start",
+    "start:fastapi": "python -m pip install -r requirements.txt && uvicorn api.index:app --port 8001 --timeout-keep-alive 120"
   },
   "dependencies": {
     "@types/node": "20.2.4",
@@ -17,6 +21,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.7.3",
     "concurrently": "^8.0.1",
+    "dotenv": "^16.4.5",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "next": "13.4.4",

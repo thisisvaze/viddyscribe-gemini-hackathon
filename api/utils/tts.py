@@ -5,7 +5,7 @@ import logging
 from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, AudioFileClip, CompositeVideoClip, CompositeAudioClip, TextClip
 from google.api_core.exceptions import ResourceExhausted
 import azure.cognitiveservices.speech as speechsdk
-from dotenv import load_dotenv
+
 import datetime
 import os
 import requests
@@ -18,19 +18,15 @@ import requests
 import glob
 import asyncio
 from pydub import AudioSegment
-
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 
 if __name__ != "__main__":
     from api.utils.llm_instructions import instructions, instructions_silent_period
     from api.utils.gemini import get_info_from_video 
     from api.utils.speech_to_text import speechToTextUtilities 
     from api.utils.model_configs import Model
-# Load environment variables from .env file
-load_dotenv()
-
-# Set the environment variable for Google Cloud authentication
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "api/gckey.json"
-
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -45,6 +41,7 @@ def get_voice_name(voice_model: str):
         return "en-US-Journey-O"
     elif voice_model == "ElevenLabs":
         return "kPzsL2i3teMYv0FxEYQ6"
+        #return "pjcYQlDFKMbcOUp6F5GD"
     else:
         raise ValueError(f"Unsupported voice model: {voice_model}")
     
@@ -81,7 +78,7 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
 
     for timestamp, text in matches:
         start_time = timestamp
-        filename = f"{start_time.replace(':', '-')}.wav"
+        filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
         
         # Create a task for each text-to-speech generation
@@ -93,7 +90,7 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
     # Check if files are created and handle them
     for timestamp, text in matches:
         start_time = timestamp
-        filename = f"{start_time.replace(':', '-')}.wav"
+        filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
         
         max_wait_time = 30
         wait_interval = 0.5
@@ -117,7 +114,7 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
             start_dt = datetime.datetime.strptime(start_time, "%M:%S")
 
         end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
-        new_filename = f"{start_time.replace(':', '-')}_to_{end_time}.wav"
+        new_filename = f"temp/{start_time.replace(':', '-')}_to_{end_time}.wav"  # Updated path to include temp folder
         os.rename(filename, new_filename)
         logging.info(f"Generated speech saved to \"{new_filename}\"")
 
@@ -315,7 +312,7 @@ async def create_final_video(video_path: str, response_body: dict, output_path: 
         ts_parts = start_timestamp.split(':')
         ts_start_seconds = int(ts_parts[0]) * 60 + float(ts_parts[1])
 
-        audio_filename = f"{start_timestamp.replace(':', '-')}_to_*.wav"
+        audio_filename = f"temp/{start_timestamp.replace(':', '-')}_to_*.wav"
         audio_files = glob.glob(audio_filename)
         if not audio_files:
             raise FileNotFoundError(f"Audio file matching {audio_filename} not found")
@@ -392,8 +389,9 @@ async def create_final_video(video_path: str, response_body: dict, output_path: 
 
         last_end = still_frame_time if still_frame_time is not None else insertion_time + audio_clip.duration
 
-    if last_end < video.duration:
-        final_segment = video.subclip(last_end, video.duration)
+    if last_end < int(video.duration):
+        final_segment_end = int(video.duration)  # Use the last whole number
+        final_segment = video.subclip(last_end, final_segment_end)
         clips.append(final_segment)
 
     final_clip = concatenate_videoclips(clips)
