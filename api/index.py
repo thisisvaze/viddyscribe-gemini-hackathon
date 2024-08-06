@@ -55,6 +55,7 @@ async def get_audio_desc_util(video_path):
     response_audio_desc = await get_info_from_video(video_path, dynamic_instructions_chain_2)
     return response_audio_desc
 
+
 @app.get("/api/video_status")
 async def video_status(path: str):
     if os.path.exists(path):
@@ -62,7 +63,7 @@ async def video_status(path: str):
     elif os.path.exists(path.replace("_output.mp4", ".mp4")):
         return {"status": "processing"}
     else: 
-        return {"status": "error"}
+        return {"status": "processing"}  # Change "error" to "processing" to avoid false negatives
     
 async def main(video_path, output_path):
     try:
@@ -85,7 +86,8 @@ async def main(video_path, output_path):
     }
 
     await create_final_video(video_path, response_body, output_path, "Azure")
-
+    
+    
 @app.post("/api/create_video")
 async def generate_endpoint(
     background_tasks: BackgroundTasks, 
@@ -96,8 +98,9 @@ async def generate_endpoint(
         raise HTTPException(status_code=403, detail="Invalid API Key")
 
     start_time = time.time()
-    video_path = f"temp/{file.filename}"
-    output_path = f"static/videos/{file.filename.split('.')[0]}_output.mp4"
+    timestamp = int(start_time)  # Get the current timestamp
+    video_path = f"temp/{timestamp}_{file.filename}"
+    output_path = f"static/videos/{timestamp}_{file.filename.split('.')[0]}_output.mp4"
     os.makedirs("temp", exist_ok=True)
     os.makedirs("static/videos", exist_ok=True)
 
@@ -119,7 +122,7 @@ async def generate_endpoint(
 
 async def process_video(video_path: str, output_path: str):
     try:
-        await asyncio.wait_for(run_final(video_path, output_path), timeout=300)
+        await asyncio.wait_for(run_final(video_path, output_path), timeout=600)
         logging.info(f"Video processing completed for {video_path}")
     except asyncio.TimeoutError:
         logging.error("Video processing timed out")
@@ -148,10 +151,11 @@ async def download_file(path: str):
         logging.error(f"File not found: {file_path}")
         raise HTTPException(status_code=404, detail="File not found")
     
-
 @app.post("/api/get_silent_periods")
 async def get_silent_periods(file: UploadFile = File(...)):
-    video_path = f"temp/{file.filename}"
+    start_time = time.time()
+    timestamp = int(start_time)  # Get the current timestamp
+    video_path = f"temp/{timestamp}_{file.filename}"
 
     os.makedirs("temp", exist_ok=True)
     with open(video_path, "wb") as buffer:
@@ -175,7 +179,6 @@ async def get_silent_periods(file: UploadFile = File(...)):
     # verified = await verify_timestamp_range(response_body, video_duration)
     # print(verified)
     # return verified
-
 
 # @app.post("/api/get_audio_desc")
 # async def get_audio_desc(file: UploadFile = File(...)):

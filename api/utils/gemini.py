@@ -21,7 +21,7 @@ async def get_info_from_video(file_path, inst):
 
     vertexai.init(project="planar-abbey-418313", location="us-central1")
     model = GenerativeModel(
-        "gemini-1.5-pro-001",
+        "gemini-1.5-flash-001",
     )
     generation_config = {
         "max_output_tokens": 8192,

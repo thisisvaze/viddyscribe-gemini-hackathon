@@ -423,6 +423,15 @@ async def get_silent_periods_util_whisper(video_path):
 
 
 async def run_final(video_path, output_path):
+    try:
+        clip = VideoFileClip(video_path)
+        video_duration = clip.duration
+        logging.info(f"Video loaded successfully. Duration: {video_duration} seconds")
+        clip.close()
+    except Exception as e:
+        logging.error(f"Error loading video: {e}")
+        return
+    
     # Get audio description and silent periods
     response_audio_desc = await get_audio_desc_util(video_path)
     ## Get silent period using Gemini
@@ -435,14 +444,7 @@ async def run_final(video_path, output_path):
         "description": response_audio_desc["description"],
         "silent_periods": response_silent_periods["description"]
     }
-    try:
-        clip = VideoFileClip(video_path)
-        video_duration = clip.duration
-        logging.info(f"Video loaded successfully. Duration: {video_duration} seconds")
-        clip.close()
-    except Exception as e:
-        logging.error(f"Error loading video: {e}")
-        return
+
 
     #verified_response = await verify_timestamp_range(response_body, video_duration)
 
