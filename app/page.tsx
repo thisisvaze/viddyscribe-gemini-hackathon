@@ -3,14 +3,36 @@
 import { useState, useCallback, useEffect } from "react";
 import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
-  const [progress, setProgress] = useState(0); // New state for progress
   const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+  useEffect(() => {
+    const clientId = Date.now().toString();
+    const socket = io("http://localhost:8000", {
+      query: { clientId }
+    });
+  
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server");
+    });
+  
+    socket.on("completed", () => {
+      console.log("Received 'completed' event from WebSocket");
+      setLoading(false);
+      setProcessingStatus("Video processing completed");
+      setDownloadUrl(`api/download/?path=videos/${file?.name.split('.')[0]}_output.mp4`);
+    });
+  
+    return () => {
+      socket.disconnect();
+    };
+  }, [file]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -46,7 +68,6 @@ export default function Home() {
     setLoading(true);
     setProcessingStatus("Uploading...");
     setDownloadUrl("");
-    setProgress(0); // Reset progress
     const VIDDYSCRIBE_API_KEY = "viddysc-8f6f7d0195efd6a0e11581e0caa26c140347392dee1a18698c7b1dd1fac46cd6"
 
     const formData = new FormData();
@@ -54,12 +75,13 @@ export default function Home() {
     try {
       const response = await axios.post("api/create_video", formData, {
         headers: {
-          'Authorization': `Bearer ${VIDDYSCRIBE_API_KEY}`
-        }
+          'Authorization': `Bearer ${VIDDYSCRIBE_API_KEY}`,
+          'client_id': Date.now().toString()
+        },
+        timeout: 1200000 // 20 minutes
       });
       if (response.data.status === "processing") {
         setProcessingStatus("Processing video...");
-        pollVideoStatus(response.data.output_path);
       } else {
         setLoading(false);
         console.error("Unexpected response from server");
@@ -70,35 +92,6 @@ export default function Home() {
       setProcessingStatus("Error: Failed to start processing");
     }
   };
-  const pollVideoStatus = useCallback(async (outputPath: string) => {
-    let progressValue = 0;
-    const pollInterval = setInterval(async () => {
-        try {
-            const response = await axios.get(`api/video_status?path=${encodeURIComponent(outputPath)}`, {
-                timeout: 600000 // 600 seconds
-            });
-            if (response.data.status === "completed") {
-                clearInterval(pollInterval);
-                setLoading(false);
-                setProcessingStatus("Video processing completed");
-                const fileName = outputPath.split('/').pop() || '';
-                setDownloadUrl(`api/download/?path=videos/${encodeURIComponent(fileName)}`);
-            } else if (response.data.status === "error") {
-                clearInterval(pollInterval);
-                setLoading(false);
-                setProcessingStatus("Error: Video processing failed");
-            } else {
-                // Update progress
-                progressValue += 5; // Increment progress by 5% for each poll
-                setProgress(progressValue);
-                setProcessingStatus("Processing video..."); // Ensure status is updated
-            }
-        } catch (error) {
-            console.error("Error polling video status", error);
-            setProcessingStatus("Error: Unable to poll video status");
-        }
-    }, 5000); // Poll every 5 seconds
-}, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -113,7 +106,7 @@ export default function Home() {
                 fileInput.click();
             }
         }}
-    >
+      >
         <input 
           id="fileInput"
           type="file" 
@@ -131,14 +124,6 @@ export default function Home() {
       >
         {loading ? "Processing..." : "Upload and Generate"}
       </button>
-      {loading && (
-        <div className="w-full bg-white/10 rounded-full h-4 mt-4">
-          <div 
-            className="bg-blue-600 h-4 rounded-full" 
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      )}
       {processingStatus && <p className="text-zinc-100">{processingStatus}</p>}
       {downloadUrl && (
         <a 

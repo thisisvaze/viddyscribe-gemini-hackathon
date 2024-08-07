@@ -13,3 +13,4 @@ elevenlabs
 python-multipart
 aiofiles
 openai
+websockets

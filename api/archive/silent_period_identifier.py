@@ -1,6 +1,5 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
-from enum import Enum
 from pydub import AudioSegment
 import time
 import asyncio
