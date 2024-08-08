@@ -1,6 +1,7 @@
 import google.cloud.texttospeech as tts
 import re
 import logging
+from asyncio import Semaphore
 from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, AudioFileClip, CompositeVideoClip, CompositeAudioClip, TextClip
 from google.api_core.exceptions import ResourceExhausted
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
@@ -27,6 +28,7 @@ import asyncio
 from pydub import AudioSegment
 from dotenv import load_dotenv
 from api.utils.gemini import VertexAIUtility
+
 
 
 # Load environment variables from .env file
@@ -102,6 +104,11 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
     timestamp_ranges = []
 
     tasks = []  # List to hold all the tasks
+    semaphore = Semaphore(10)  # Limit to 10 concurrent tasks
+
+    async def limited_tts_utility(model_name, text, filename):
+        async with semaphore:
+            await tts_utility(model_name, text, filename)
 
     for match in matches:
         timestamp, text = match  # Split the match to get timestamp and text
@@ -109,9 +116,8 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
         filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
         
-        
         # Create a task for each text-to-speech generation
-        tasks.append(tts_utility(model_name, text, filename))
+        tasks.append(limited_tts_utility(model_name, text, filename))
 
     # Run all tasks concurrently
     await asyncio.gather(*tasks)
@@ -153,6 +159,71 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
 
     logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
     return timestamp_ranges
+
+# async def generate_wav_files_from_response(response_body: dict, model_name: str):
+#     description = response_body["description"]
+#     logging.info(f"Description: {description}")  # Log the description to verify its format
+#     pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')  # Updated regex pattern
+#     matches = pattern.findall(description)
+
+#     if not matches:
+#         logging.error("No matches found in the description.")
+#         return []
+
+#     timestamp_ranges = []
+
+#     tasks = []  # List to hold all the tasks
+
+#     for match in matches:
+#         timestamp, text = match  # Split the match to get timestamp and text
+#         start_time = timestamp.strip('[')
+#         filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
+#         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
+        
+        
+#         # Create a task for each text-to-speech generation
+#         tasks.append(tts_utility(model_name, text, filename))
+
+#     # Run all tasks concurrently
+#     await asyncio.gather(*tasks)
+
+#     # Check if files are created and handle them
+#     for match in matches:
+#         timestamp, text = match  # Directly unpack the tuple
+#         start_time = timestamp.strip('[')
+#         filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
+#         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
+        
+#         max_wait_time = 30
+#         wait_interval = 0.5
+#         elapsed_time = 0
+
+#         while (not os.path.exists(filename) or os.path.getsize(filename) == 0) and elapsed_time < max_wait_time:
+#             logging.info(f"Waiting for file {filename} to be created. Elapsed time: {elapsed_time}s")
+#             await asyncio.sleep(wait_interval)
+#             elapsed_time += wait_interval
+
+#         if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+#             logging.error(f"Failed to generate WAV file: {filename}")
+#             raise Exception(f"Failed to generate WAV file: {filename}")
+
+#         audio_clip = AudioFileClip(filename)
+#         duration = audio_clip.duration
+
+#         try:
+#             start_dt = datetime.datetime.strptime(start_time, "%M:%S.%f")
+#         except ValueError:
+#             start_dt = datetime.datetime.strptime(start_time, "%M:%S")
+
+#         end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
+#         new_filename = f"temp/{start_time.replace(':', '-')}_to_{end_time}.wav"  # Updated path to include temp folder
+#         os.rename(filename, new_filename)
+#         logging.info(f"Generated speech saved to \"{new_filename}\"")
+
+#         timestamp_ranges.append(f"[{start_time}] - [{end_time}] {text}")
+
+#     logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
+#     return timestamp_ranges
 
 def text_to_wav(voice_name: str, text: str, filename: str):
     language_code = "-".join(voice_name.split("-")[:2])
@@ -211,7 +282,6 @@ def get_audio_desc_util(video_path):
     dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
     time.sleep(2)
     video = v.load_video(video_path)
-
     response_audio_desc = v.get_info_from_video(video, dynamic_instructions_chain_2)
     reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
     return reformmated_desc
@@ -224,7 +294,7 @@ def convert_mp4_to_wav(video_path):
     
     return audio_path
 
-async def main_function(video_path, output_path):
+async def main_function(video_path, output_path, add_bg_music):
     try:
         clip = VideoFileClip(video_path)
         video_duration = clip.duration
@@ -239,9 +309,9 @@ async def main_function(video_path, output_path):
     response_body = {
         "description": response_audio_desc["description"],
     }
-    await create_final_video_v2(video_path, response_body, output_path, "ElevenLabs")
+    await create_final_video_v2(video_path, response_body, output_path, "ElevenLabs", add_bg_music)
 
-async def create_final_video_v2(video_path: str, response_body: dict, output_path: str, model_name):
+async def create_final_video_v2(video_path: str, response_body: dict, output_path: str, model_name, add_bg_music : bool):
 
     original_videos_audio = convert_mp4_to_wav(video_path)
     # Load the audio file into an AudioFileClip object
@@ -301,29 +371,52 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
             else:
                 e_time = ts_start_seconds
 
-            # Extract audio using ffmpeg
-            temp_audio_path = "temp_audio.wav"
-            subclip = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time)
-            subclip.write_audiofile(temp_audio_path)
-            subclip = AudioFileClip(temp_audio_path)
-            
-            
-            music_path = music_generator.generate_music(
-                melody_path=subclip.filename,
-                descriptions=" ",
-                duration=int(audio_clip.duration)
-            )
-
-            fade_duration = 1
-
-            # Volume alignment and transition
+            fade_duration = 0.5
+            bg_fade_duration = 0.2
+            vid_max_volume = original_audio_clip.max_volume()
             still_frame_volume = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time).max_volume()
-            generated_music_clip = AudioFileClip(music_path)
-            #faded_in_audio_original_track = 
-            #faded_out_audio_original_track = 
-            generated_music_clip = generated_music_clip.volumex(still_frame_volume).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex(still_frame_volume)
-            #add third layer 
-            combined_audio = CompositeAudioClip([still_clip.audio, generated_music_clip.set_start(0)])
+            if add_bg_music:
+                # Extract audio using ffmpeg
+                temp_audio_path = "temp_audio.wav"
+                subclip = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time)
+                subclip.write_audiofile(temp_audio_path)
+                subclip = AudioFileClip(temp_audio_path)
+                
+                music_path = music_generator.generate_music(
+                    melody_path=subclip.filename,
+                    descriptions=" ",
+                    duration=int(audio_clip.duration)
+                )
+
+                # Volume alignment and transition
+                generated_music_clip = AudioFileClip(music_path)
+                generated_music_clip = generated_music_clip.volumex(vid_max_volume*0.5).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex(vid_max_volume*0.5)
+    
+                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume), generated_music_clip.set_start(0)]
+                #combine all audio together
+                if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
+                    faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)
+                    combined_audio_clips.append(faded_out_start_audio_original_track)
+
+                    faded_in_end_audio_original_track = original_audio_clip.subclip(ts_start_seconds - bg_fade_duration, ts_start_seconds).audio_fadein(bg_fade_duration)
+                    combined_audio_clips.append(faded_in_end_audio_original_track.set_start(ts_start_seconds + audio_clip.duration - bg_fade_duration))
+
+                #combine all audio together with generated bg music
+                combined_audio = CompositeAudioClip(combined_audio_clips)
+                
+            else:
+                still_frame_volume = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time).max_volume()
+                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume)]
+                #combine all audio together
+                if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
+                    faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)
+                    combined_audio_clips.append(faded_out_start_audio_original_track)
+
+                    faded_in_end_audio_original_track = original_audio_clip.subclip(ts_start_seconds - bg_fade_duration, ts_start_seconds).audio_fadein(bg_fade_duration)
+                    combined_audio_clips.append(faded_in_end_audio_original_track.set_start(audio_clip.duration - bg_fade_duration))
+
+                combined_audio = CompositeAudioClip(combined_audio_clips)
+                    
             still_clip = still_clip.set_audio(combined_audio)
             
             clips.append(still_clip)

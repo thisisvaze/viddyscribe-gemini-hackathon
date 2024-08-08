@@ -1,0 +1,1332 @@
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[0] [?25h
+[0] [?25h
+[0] npm run next-dev exited with code SIGINT
+[0] npm run next-dev exited with code SIGINT
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+[0] [0] 
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+[1] [1] 
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+[0] [0] - ready started server on 0.0.0.0:3000, url: http://localhost:3000
+- ready started server on 0.0.0.0:3000, url: http://localhost:3000
+[0] - [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+[0] - [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+[1] [1] Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+[1] [1] Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+[1] [1] Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+[1] [1] Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+[1] Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+[1] Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+[1] [1] Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+[1] [1] Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+[1] Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+[1] Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+[1] [1] Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+[1] [1] Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+[1] [1] Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+[1] [1] Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+[1] [1] Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+[1] [1] Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+[1] [1] Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+[1] [1] Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+[1] [1] Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+[1] [1] Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+[1] Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+[1] Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+[1] [1] Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+[1] [1] Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[0] - [35mevent[39m compiled client and server successfully in 636 ms (313 modules)
+[0] - [35mevent[39m compiled client and server successfully in 636 ms (313 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled client and server successfully in 217 ms (313 modules)
+[0] - [35mevent[39m compiled client and server successfully in 217 ms (313 modules)
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [897632] using StatReload
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [897632] using StatReload
+[0] (node:897469) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] (node:897469) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 943 ms (725 modules)
+[0] - [35mevent[39m compiled client and server successfully in 943 ms (725 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled successfully in 100 ms (390 modules)
+[0] - [35mevent[39m compiled successfully in 100 ms (390 modules)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 388 ms (768 modules)
+[0] - [35mevent[39m compiled client and server successfully in 388 ms (768 modules)
+[1] 2024-08-08 12:22:27,624 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:22:27,624 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:22:28,878 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] 2024-08-08 12:22:28,878 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] INFO:     Started server process [897634]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Started server process [897634]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Application startup complete.
+[1] INFO:     Application startup complete.
+[1] [1] ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+[1] Process SpawnProcess-1:
+[1] Process SpawnProcess-1:
+[1] Traceback (most recent call last):
+[1] Traceback (most recent call last):
+[1] [1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+  File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[0] (node:897508) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] (node:897508) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[0] [?25h
+[0] [?25h
+[0] npm run next-dev exited with code SIGINT
+[0] npm run next-dev exited with code SIGINT
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+[0] [0] 
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+[1] [1] 
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+[0] - ready started server on 0.0.0.0:3000, url: http://localhost:3000
+[0] - ready started server on 0.0.0.0:3000, url: http://localhost:3000
+[0] [0] - [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+[1] [1] Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+[1] [1] Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+[1] [1] Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+[1] [1] Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+[1] [1] Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+[1] [1] Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+[1] [1] Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+[1] [1] Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+[1] [1] Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+[1] [1] Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+[1] [1] Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+[1] Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+[1] Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+[1] Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+[1] Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+[1] [1] Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+[1] [1] Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+[1] [1] Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+[1] Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+[1] Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+[1] Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+[1] Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+[1] Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+[1] Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+[1] Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+[1] Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+[1] [1] Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[0] - [35mevent[39m compiled client and server successfully in 640 ms (313 modules)
+[0] - [35mevent[39m compiled client and server successfully in 640 ms (313 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] (node:901900) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] (node:901900) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [902062] using StatReload
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [902062] using StatReload
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 1369 ms (725 modules)
+[0] - [35mevent[39m compiled client and server successfully in 1369 ms (725 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled successfully in 103 ms (390 modules)
+[0] - [35mevent[39m compiled successfully in 103 ms (390 modules)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 251 ms (768 modules)
+[0] - [35mevent[39m compiled client and server successfully in 251 ms (768 modules)
+[1] 2024-08-08 12:40:48,069 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:40:48,069 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:40:49,267 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] 2024-08-08 12:40:49,267 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] INFO:     Started server process [902064]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Started server process [902064]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Application startup complete.
+[1] INFO:     Application startup complete.
+[1] [1] ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+[1] [1] Process SpawnProcess-1:
+Process SpawnProcess-1:
+[1] [1] Traceback (most recent call last):
+Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[0] [0] (node:901938) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:901938) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] 2024-08-08 12:43:54,177 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:43:54,177 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:43:55,340 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] 2024-08-08 12:43:55,340 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] INFO:     Started server process [904814]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Started server process [904814]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Application startup complete.
+[1] INFO:     Application startup complete.
+[1] [1] ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+[1] Process SpawnProcess-2:
+[1] Process SpawnProcess-2:
+[1] Traceback (most recent call last):
+[1] Traceback (most recent call last):
+[1] [1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+  File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] Process SpawnProcess-3:
+[1] Process SpawnProcess-3:
+[1] Traceback (most recent call last):
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 76, in _serve
+[1]     config.load()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/config.py", line 434, in load
+[1]     self.loaded_app = import_from_string(self.app)
+[1]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+[1]     module = importlib.import_module(module_str)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/importlib/__init__.py", line 126, in import_module
+[1]     return _bootstrap._gcd_import(name[level:], package, level)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+[1]   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+[1]   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+[1]   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+[1]   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+[1]   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[1]   File "/home/azureuser/viddyscribe-gemini-hackathon/api/index.py", line 11, in <module>
+[1]     from api.utils.text_to_speech import main_function
+[1]   File "/home/azureuser/viddyscribe-gemini-hackathon/api/utils/text_to_speech.py", line 393
+[1]     generated_music_clip = generated_music_clip.volumex(vid_max_volume*0.5).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex(vid_max_volvid_max_volume*0.5ume)
+[1]                                                                                                                                                                                       ^
+[1] SyntaxError: invalid decimal literal
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 76, in _serve
+[1]     config.load()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/config.py", line 434, in load
+[1]     self.loaded_app = import_from_string(self.app)
+[1]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+[1]     module = importlib.import_module(module_str)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/importlib/__init__.py", line 126, in import_module
+[1]     return _bootstrap._gcd_import(name[level:], package, level)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+[1]   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+[1]   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+[1]   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+[1]   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+[1]   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[1]   File "/home/azureuser/viddyscribe-gemini-hackathon/api/index.py", line 11, in <module>
+[1]     from api.utils.text_to_speech import main_function
+[1]   File "/home/azureuser/viddyscribe-gemini-hackathon/api/utils/text_to_speech.py", line 393
+[1]     generated_music_clip = generated_music_clip.volumex(vid_max_volume*0.5).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex(vid_max_volvid_max_volume*0.5ume)
+[1]                                                                                                                                                                                       ^
+[1] SyntaxError: invalid decimal literal
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[0] [?25h
+[0] [?25h
+[0] npm run next-dev exited with code SIGINT
+[0] npm run next-dev exited with code SIGINT
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+
+> nextjs-fastapi@0.1.0 dev
+> concurrently "npm run next-dev" "npm run fastapi-dev"
+
+[0] [0] 
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev
+[0] 
+[1] 
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+[1] 
+[1] > nextjs-fastapi@0.1.0 fastapi-dev
+[1] > pip install -r requirements.txt && python -m uvicorn api.index:app --port 8001 --reload --timeout-keep-alive 120
+[1] 
+[0] [0] - ready started server on 0.0.0.0:3000, url: http://localhost:3000
+- ready started server on 0.0.0.0:3000, url: http://localhost:3000
+[0] - [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+[0] - [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
+[1] [1] Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+Requirement already satisfied: fastapi in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (0.112.0)
+[1] [1] Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+Requirement already satisfied: uvicorn in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (0.30.5)
+[1] [1] Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+Requirement already satisfied: moviepy in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.0.3)
+[1] [1] Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+Requirement already satisfied: google-cloud-texttospeech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.16.5)
+[1] [1] Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+Requirement already satisfied: google-cloud-aiplatform in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (1.60.0)
+[1] [1] Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+Requirement already satisfied: logger in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 6)) (1.4)
+[1] Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+[1] Requirement already satisfied: azure-cognitiveservices-speech in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 7)) (1.38.0)
+[1] [1] Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+Requirement already satisfied: python-dotenv in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 8)) (1.0.1)
+[1] [1] Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+Requirement already satisfied: ffmpeg-python in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 9)) (0.2.0)
+[1] [1] Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+Requirement already satisfied: pydub in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (0.25.1)
+[1] [1] Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+Requirement already satisfied: requests in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 11)) (2.32.3)
+[1] [1] Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+Requirement already satisfied: elevenlabs in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 12)) (1.6.1)
+[1] Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+[1] Requirement already satisfied: python-multipart in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.0.9)
+[1] [1] Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+Requirement already satisfied: aiofiles in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (23.2.1)
+[1] Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+[1] Requirement already satisfied: openai in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 15)) (1.40.0)
+[1] [1] Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+Requirement already satisfied: websockets in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from -r requirements.txt (line 16)) (12.0)
+[1] [1] Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+Requirement already satisfied: starlette<0.38.0,>=0.37.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (0.37.2)
+[1] Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+[1] Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (2.8.2)
+[1] [1] Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+Requirement already satisfied: typing-extensions>=4.8.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from fastapi->-r requirements.txt (line 1)) (4.12.2)
+[1] Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+[1] Requirement already satisfied: click>=7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (8.1.7)
+[1] [1] Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+Requirement already satisfied: h11>=0.8 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from uvicorn->-r requirements.txt (line 2)) (0.14.0)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: decorator<5.0,>=4.0.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.4.2)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: tqdm<5.0,>=4.11.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (4.66.5)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: proglog<=1.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.1.10)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: numpy>=1.17.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (1.26.3)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio<3.0,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (2.34.2)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: imageio-ffmpeg>=0.2.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from moviepy->-r requirements.txt (line 3)) (0.5.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (2.19.1)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (2.32.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (1.24.0)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-texttospeech->-r requirements.txt (line 4)) (4.25.4)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: packaging>=14.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (24.1)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-storage<3.0.0dev,>=1.32.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.18.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (3.25.0)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: google-cloud-resource-manager<3.0.0dev,>=1.3.3 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (1.12.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: shapely<3.0.0dev in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (2.0.5)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: docstring-parser<1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-aiplatform->-r requirements.txt (line 5)) (0.16)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: future in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from ffmpeg-python->-r requirements.txt (line 9)) (1.0.0)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: charset-normalizer<4,>=2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.3.2)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: idna<4,>=2.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (3.7)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: urllib3<3,>=1.21.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2.2.2)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: certifi>=2017.4.17 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from requests->-r requirements.txt (line 11)) (2024.7.4)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: httpx>=0.21.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (0.27.0)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: pydantic-core<3.0.0,>=2.18.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from elevenlabs->-r requirements.txt (line 12)) (2.20.1)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: anyio<5,>=3.5.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (4.4.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: distro<2,>=1.7.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.9.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: jiter<1,>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (0.5.0)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: sniffio in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from openai->-r requirements.txt (line 15)) (1.3.1)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.63.2)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio<2.0dev,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.65.4)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: grpcio-status<2.0.dev0,>=1.33.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (1.62.3)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (5.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.4.0)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[1] Requirement already satisfied: rsa<5,>=3.1.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (4.9)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-cloud-core<3.0.0dev,>=1.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.4.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: google-resumable-media<3.0dev,>=0.6.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.7.1)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: python-dateutil<3.0dev,>=2.7.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (2.9.0.post0)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[1] Requirement already satisfied: grpc-google-iam-v1<1.0.0dev,>=0.12.4 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0dev,>=1.3.3->google-cloud-aiplatform->-r requirements.txt (line 5)) (0.13.1)
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from google-cloud-storage<3.0.0dev,>=1.32.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.5.0)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: httpcore==1.* in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from httpx>=0.21.2->elevenlabs->-r requirements.txt (line 12)) (1.0.5)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: pillow>=8.3.2 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio<3.0,>=2.5->moviepy->-r requirements.txt (line 3)) (10.2.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: setuptools in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from imageio-ffmpeg>=0.2.0->moviepy->-r requirements.txt (line 3)) (72.1.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: annotated-types>=0.4.0 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1)) (0.7.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth!=2.24.0,!=2.25.0,<3.0.0dev,>=2.14.1->google-cloud-texttospeech->-r requirements.txt (line 4)) (0.6.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[1] Requirement already satisfied: six>=1.5 in /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages (from python-dateutil<3.0dev,>=2.7.2->google-cloud-bigquery!=3.20.0,<4.0.0dev,>=1.15.0->google-cloud-aiplatform->-r requirements.txt (line 5)) (1.16.0)
+[0] - [35mevent[39m compiled client and server successfully in 620 ms (313 modules)
+[0] - [35mevent[39m compiled client and server successfully in 620 ms (313 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] (node:905335) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] (node:905335) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [36mwait[39m compiling /page (client and server)...
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Will watch for changes in these directories: ['/home/azureuser/viddyscribe-gemini-hackathon']
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [905498] using StatReload
+[1] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [905498] using StatReload
+[0] - [35mevent[39m compiled client and server successfully in 1313 ms (725 modules)
+[0] - [35mevent[39m compiled client and server successfully in 1313 ms (725 modules)
+[0] - [36mwait[39m compiling...
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled successfully in 110 ms (390 modules)
+[0] - [35mevent[39m compiled successfully in 110 ms (390 modules)
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [33mwarn[39m The static directory has been deprecated in favor of the public directory. https://nextjs.org/docs/messages/static-dir-deprecated
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [36mwait[39m compiling /_error (client and server)...
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [36mwait[39m compiling /favicon.ico/route (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 143 ms (713 modules)
+[0] - [35mevent[39m compiled client and server successfully in 143 ms (713 modules)
+[0] - [35mevent[39m compiled client and server successfully (768 modules)
+[0] - [35mevent[39m compiled client and server successfully (768 modules)
+[0] (node:905374) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] (node:905374) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] Failed to proxy http://127.0.0.1:8001/api/create_video Error: connect ECONNREFUSED 127.0.0.1:8001
+[0] [90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+[0]   errno: [33m-111[39m,
+[0]   code: [32m'ECONNREFUSED'[39m,
+[0]   syscall: [32m'connect'[39m,
+[0]   address: [32m'127.0.0.1'[39m,
+[0]   port: [33m8001[39m
+[0] }
+[0] Failed to proxy http://127.0.0.1:8001/api/create_video Error: connect ECONNREFUSED 127.0.0.1:8001
+[0] [90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+[0]   errno: [33m-111[39m,
+[0]   code: [32m'ECONNREFUSED'[39m,
+[0]   syscall: [32m'connect'[39m,
+[0]   address: [32m'127.0.0.1'[39m,
+[0]   port: [33m8001[39m
+[0] }
+[0] - [31merror[39m Error: connect ECONNREFUSED 127.0.0.1:8001
+[0] [90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+[0]   errno: [33m-111[39m,
+[0]   code: [32m'ECONNREFUSED'[39m,
+[0]   syscall: [32m'connect'[39m,
+[0]   address: [32m'127.0.0.1'[39m,
+[0]   port: [33m8001[39m
+[0] }
+[0] - [31merror[39m Error: connect ECONNREFUSED 127.0.0.1:8001
+[0] [90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+[0]   errno: [33m-111[39m,
+[0]   code: [32m'ECONNREFUSED'[39m,
+[0]   syscall: [32m'connect'[39m,
+[0]   address: [32m'127.0.0.1'[39m,
+[0]   port: [33m8001[39m
+[0] }
+[1] 2024-08-08 12:44:34,707 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:44:34,707 - INFO - T5 will be evaluated with autocast as float32
+[1] 2024-08-08 12:44:35,887 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] 2024-08-08 12:44:35,887 - WARNING - /home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+[1]   warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[1] 
+[1] INFO:     Started server process [905500]
+[1] INFO:     Started server process [905500]
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Application startup complete.
+[1] INFO:     Waiting for application startup.
+[1] INFO:     Application startup complete.
+[1] ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+[1] ERROR:    Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] 
+[1] During handling of the above exception, another exception occurred:
+[1] 
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/starlette/routing.py", line 741, in lifespan
+[1]     await receive()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[1]     return await self.receive_queue.get()
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/queues.py", line 158, in get
+[1]     await getter
+[1] asyncio.exceptions.CancelledError
+[1] 
+[1] [1] Process SpawnProcess-1:
+Process SpawnProcess-1:
+[1] Traceback (most recent call last):
+[1] Traceback (most recent call last):
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[1]     self.run()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/multiprocessing/process.py", line 108, in run
+[1]     self._target(*self._args, **self._kwargs)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+[1]     target(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+[1]     return asyncio.run(self.serve(sockets=sockets))
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 190, in run
+[1]     return runner.run(main)
+[1]            ^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/runners.py", line 118, in run
+[1]     return self._loop.run_until_complete(task)
+[1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[1]     return future.result()
+[1]            ^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+[1]     await self._serve(sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 84, in _serve
+[1]     await self.startup(sockets=sockets)
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/site-packages/uvicorn/server.py", line 134, in startup
+[1]     server = await loop.create_server(create_protocol, sock=sock, ssl=config.ssl, backlog=config.backlog)
+[1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 1561, in create_server
+[1]     server._start_serving()
+[1]   File "/home/azureuser/miniconda3/envs/gpu/lib/python3.11/asyncio/base_events.py", line 316, in _start_serving
+[1]     sock.listen(self._backlog)
+[1] OSError: [Errno 98] Address already in use
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[1] WARNING:  StatReload detected changes in 'api/utils/text_to_speech.py'. Reloading...
+[0] [?25h
+[0] [?25h
+[0] npm run next-dev exited with code SIGINT
+[0] npm run next-dev exited with code SIGINT
