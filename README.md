@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://viddyscribe.vercel.app/">
+  <a href="https://app.viddyscribe.com/">
     <img src="/viddy_logo.png" height="96">
     <h3 align="center">ViddyScribe</h3>
   </a>

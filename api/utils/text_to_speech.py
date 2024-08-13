@@ -98,8 +98,9 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
     matches = pattern.findall(description)
 
     if not matches:
-        logging.error("No matches found in the description.")
-        return []
+        logging.error("No timestamps found in the description returned by gemini.")
+        raise ValueError("Failed to generate response audio timestamps")
+
 
     timestamp_ranges = []
 
@@ -108,7 +109,17 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
 
     async def limited_tts_utility(model_name, text, filename):
         async with semaphore:
-            await tts_utility(model_name, text, filename)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    await tts_utility(model_name, text, filename)
+                    break  # Exit the loop if successful
+                except Exception as e:
+                    logging.error(f"Error generating WAV file on attempt {attempt + 1} for text: '{text}' - {e}")
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(2)  # Wait before retrying
+                    else:
+                        raise
 
     for match in matches:
         timestamp, text = match  # Split the match to get timestamp and text
@@ -159,71 +170,6 @@ async def generate_wav_files_from_response(response_body: dict, model_name: str)
 
     logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
     return timestamp_ranges
-
-# async def generate_wav_files_from_response(response_body: dict, model_name: str):
-#     description = response_body["description"]
-#     logging.info(f"Description: {description}")  # Log the description to verify its format
-#     pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')  # Updated regex pattern
-#     matches = pattern.findall(description)
-
-#     if not matches:
-#         logging.error("No matches found in the description.")
-#         return []
-
-#     timestamp_ranges = []
-
-#     tasks = []  # List to hold all the tasks
-
-#     for match in matches:
-#         timestamp, text = match  # Split the match to get timestamp and text
-#         start_time = timestamp.strip('[')
-#         filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
-#         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
-        
-        
-#         # Create a task for each text-to-speech generation
-#         tasks.append(tts_utility(model_name, text, filename))
-
-#     # Run all tasks concurrently
-#     await asyncio.gather(*tasks)
-
-#     # Check if files are created and handle them
-#     for match in matches:
-#         timestamp, text = match  # Directly unpack the tuple
-#         start_time = timestamp.strip('[')
-#         filename = f"temp/{start_time.replace(':', '-')}.wav"  # Updated path to include temp folder
-#         logging.info(f"Generating WAV for text: '{text}' at timestamp: {start_time} with filename: {filename}")
-        
-#         max_wait_time = 30
-#         wait_interval = 0.5
-#         elapsed_time = 0
-
-#         while (not os.path.exists(filename) or os.path.getsize(filename) == 0) and elapsed_time < max_wait_time:
-#             logging.info(f"Waiting for file {filename} to be created. Elapsed time: {elapsed_time}s")
-#             await asyncio.sleep(wait_interval)
-#             elapsed_time += wait_interval
-
-#         if not os.path.exists(filename) or os.path.getsize(filename) == 0:
-#             logging.error(f"Failed to generate WAV file: {filename}")
-#             raise Exception(f"Failed to generate WAV file: {filename}")
-
-#         audio_clip = AudioFileClip(filename)
-#         duration = audio_clip.duration
-
-#         try:
-#             start_dt = datetime.datetime.strptime(start_time, "%M:%S.%f")
-#         except ValueError:
-#             start_dt = datetime.datetime.strptime(start_time, "%M:%S")
-
-#         end_time = (start_dt + datetime.timedelta(seconds=duration)).strftime("%M-%S.%f")[:-3]
-#         new_filename = f"temp/{start_time.replace(':', '-')}_to_{end_time}.wav"  # Updated path to include temp folder
-#         os.rename(filename, new_filename)
-#         logging.info(f"Generated speech saved to \"{new_filename}\"")
-
-#         timestamp_ranges.append(f"[{start_time}] - [{end_time}] {text}")
-
-#     logging.info(f"Generated timestamp ranges: {timestamp_ranges}")
-#     return timestamp_ranges
 
 def text_to_wav(voice_name: str, text: str, filename: str):
     language_code = "-".join(voice_name.split("-")[:2])
@@ -277,12 +223,15 @@ def get_audio_desc_util(video_path):
         print(f"Error: Video file '{video_path}' is invalid or corrupted.")
         return {"error": "Invalid video file"}
 
-    video = v.load_video(video_path)  # Use the load_video method from VertexAIUtility
-    response = v.get_info_from_video(video, instructions_chain_1)
+    # video = v.load_video(video_path)  # Use the load_video method from VertexAIUtility
+    # response = v.get_info_from_video_curl(video, instructions_chain_1)
+    # dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
+    # time.sleep(4)
+    # video = v.load_video(video_path)
+    # response_audio_desc = v.get_info_from_video_curl(video, dynamic_instructions_chain_2)
+    response = v.get_info_from_video_curl(video_path, instructions_chain_1)
     dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
-    time.sleep(2)
-    video = v.load_video(video_path)
-    response_audio_desc = v.get_info_from_video(video, dynamic_instructions_chain_2)
+    response_audio_desc = v.get_info_from_video_curl(video_path, dynamic_instructions_chain_2)
     reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
     return reformmated_desc
  
@@ -302,14 +251,27 @@ async def main_function(video_path, output_path, add_bg_music):
         clip.close()
     except Exception as e:
         logging.error(f"Error loading video: {e}")
-        return
+        return {"status": "error", "message": str(e)}
     
     # Get audio description
     response_audio_desc = get_audio_desc_util(video_path)
+    if "error" in response_audio_desc:
+        logging.error(f"Error in Gemini response: {response_audio_desc['error']}")
+        return {"status": "error", "message": response_audio_desc["error"]}
+
     response_body = {
         "description": response_audio_desc["description"],
     }
-    await create_final_video_v2(video_path, response_body, output_path, "ElevenLabs", add_bg_music)
+    try:
+        await create_final_video_v2(video_path, response_body, output_path, "ElevenLabs", add_bg_music)
+    except ValueError as e:
+        logging.error(f"Error during video processing: {e}")
+        return {"status": "error", "message": str(e)}
+    except Exception as e:
+        logging.error(f"Unexpected error during video processing: {e}")
+        return {"status": "error", "message": str(e)}
+    
+    return {"status": "success", "output_path": output_path}
 
 async def create_final_video_v2(video_path: str, response_body: dict, output_path: str, model_name, add_bg_music : bool):
 
@@ -433,199 +395,3 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
     final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
 
     logging.info(f"Final video created successfully. Duration: {final_clip.duration} seconds")
-
-# async def get_silent_periods_util_whisper(video_path):
-#     audio_path = f"{os.path.splitext(video_path)[0]}.wav"
-    
-#     # Convert video to audio
-#     video = AudioSegment.from_file(video_path, format="mp4")
-#     video.export(audio_path, format="wav")
-    
-#     stt_util = speechToTextUtilities(Model.AzureOpenAI)
-#     silent_periods = await stt_util.transcribe_with_timestamps_openai(audio_path)
-    
-#     return {"description": silent_periods}
-
-# async def verify_timestamp_range(response_body, video_duration):
-#     # Verify and adjust the last timestamp in response_audio_desc
-#     if "description" in response_body:
-#         pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
-#         matches = pattern.findall(response_body["description"])
-#         logging.info(f"Description matches: {matches}")
-#         if matches:
-#             last_timestamp = matches[-1][0]
-#             last_time_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(last_timestamp.split(":"))))
-#             if last_time_seconds > video_duration:
-#                 adjusted_time = video_duration - 0.1
-#                 adjusted_timestamp = f"{int(adjusted_time // 60)}:{adjusted_time % 60:.3f}"
-#                 response_body["description"] = re.sub(r'\[\d{1,2}:\d{2}(?:\.\d{3})?\] (.+)$', f'[{adjusted_timestamp}] \\1', response_body["description"])
-
-#     # Verify and adjust the timestamps in response_silent_periods
-#     if "silent_periods" in response_body:
-#         silent_pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] - \[(\d{1,2}:\d{2}(?:\.\d{3})?)\]')
-#         silent_matches = silent_pattern.findall(response_body["silent_periods"])
-#         logging.info(f"Silent periods matches: {silent_matches}")
-#         adjusted_silent_periods = []
-
-#         for start, end in silent_matches:
-#             start_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(start.split(":"))))
-#             end_seconds = sum(float(x) * 60 ** i for i, x in enumerate(reversed(end.split(":"))))
-
-#             if end_seconds > video_duration:
-#                 end_seconds = video_duration
-#                 end = f"{int(end_seconds // 60)}:{end_seconds % 60:.3f}"
-
-#             adjusted_silent_periods.append(f"[{start}] - [{end}]")
-
-#         response_body["silent_periods"] = "\n".join(adjusted_silent_periods)
-    
-#     # Log the adjusted response body for debugging
-#     logging.info(f"Adjusted response body: {response_body}")
-    
-#     return response_body  # Removed await here as it is not necessary
-
-# if __name__ == "__main__":
-#     from llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
-#     # Path to a sample video file
-#     current_dir = os.path.dirname(os.path.abspath(__file__))
-#     video_path = os.path.abspath(os.path.join(current_dir, "../../temp/input_test_panda.mp4"))  # Updated path to be relative to the current directory
-#     output_path = os.path.abspath(os.path.join(current_dir, "../../temp/output_video.mp4"))  # Updated path to be relative to the current directory
-#     asyncio.run(main_function(video_path, output_path))
-
-
-
-# def get_silent_periods_util(video_path):
-#     v = VertexAIUtility()
-#     response_silent_periods = v.get_info_from_video(video_path, instructions_silent_period)
-#     return response_silent_periods
-
-
-
-# async def create_final_video(video_path: str, response_body: dict, output_path: str, model_name):
-#     response_audio_timestamps = await generate_wav_files_from_response(response_body, model_name)
-#     if not response_audio_timestamps:
-#         logging.error("Failed to generate response audio timestamps")
-#         raise ValueError("Failed to generate response audio timestamps")
-
-#     try:
-#         video = VideoFileClip(video_path)
-#     except OSError as e:
-#         logging.error(f"Error loading video file {video_path}: {e}")
-#         raise ValueError(f"Error loading video file {video_path}: {e}")
-
-#     description = response_body["description"]
-#     logging.info(f"Description: {description}")
-#     pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] (.+)')
-#     matches = pattern.findall(description)
-#     logging.info(f"Matches: {matches}")
-
-#     silent_periods = response_body["silent_periods"]
-#     logging.info(f"Silent periods: {silent_periods}")
-#     no_speech_pattern = re.compile(r'\[(\d{1,2}:\d{2}(?:\.\d{3})?)\] - \[(\d{1,2}:\d{2}(?:\.\d{3})?)\]\s*')
-#     no_speech_matches = no_speech_pattern.findall(silent_periods)
-
-#     no_speech_periods = []
-#     for start, end in no_speech_matches:
-#         start_parts = start.split(':')
-#         end_parts = end.split(':')
-#         start_seconds = int(start_parts[0]) * 60 + float(start_parts[1])
-#         end_seconds = int(end_parts[0]) * 60 + float(end_parts[1])
-#         no_speech_periods.append((start_seconds, end_seconds))
-
-#     if not no_speech_periods or no_speech_periods[0][0] > 0:
-#         no_speech_periods.insert(0, (0, 0.1))
-
-#     clips = []
-#     last_end = 0
-#     added_timestamps = set()
-
-#     for i, (start_timestamp, text) in enumerate(matches):
-#         ts_parts = start_timestamp.split(':')
-#         ts_start_seconds = int(ts_parts[0]) * 60 + float(ts_parts[1])
-
-#         audio_filename = f"temp/{start_timestamp.replace(':', '-')}_to_*.wav"
-#         audio_files = glob.glob(audio_filename)
-#         if not audio_files:
-#             raise FileNotFoundError(f"Audio file matching {audio_filename} not found")
-#         audio_clip = AudioFileClip(audio_files[0])
-
-#         insertion_time = None
-#         still_frame_time = None
-#         for silent_period_start, silent_period_end in no_speech_periods:
-#             if silent_period_start <= ts_start_seconds <= silent_period_end:
-#                 if ts_start_seconds + audio_clip.duration <= silent_period_end:
-#                     insertion_time = ts_start_seconds
-#                     logging.info(f"Silent period covers entire audio at {start_timestamp}. No still frame needed, adding the clip here: {insertion_time}")
-#                 else:
-#                     insertion_time = ts_start_seconds
-#                     still_frame_time = silent_period_end
-#                     logging.info(f"Silent period partially covers audio at {start_timestamp}. Adding clip until {silent_period_end} and then still frame.")
-#                 break
-#             elif (silent_period_start >= ts_start_seconds and silent_period_start-ts_start_seconds < 5) or (silent_period_end <= ts_start_seconds and ts_start_seconds - silent_period_end < 5):
-#                 if silent_period_start >= last_end:
-#                     insertion_time = silent_period_start
-#                     logging.info(f"Silent period found for audio at {start_timestamp}. Inserting here: {insertion_time}")
-#                     if silent_period_end - silent_period_start <= audio_clip.duration:
-#                         still_frame_time = silent_period_end
-#                     break
-
-#         if insertion_time is None:
-#             insertion_time = last_end + 0.5
-#             still_frame_time = last_end + 0.5
-#             logging.warning(f"No silent period found for audio at {start_timestamp}. Inserting a little after last description: {insertion_time}")
-
-#         if insertion_time >= last_end and still_frame_time is not None:
-#             if still_frame_time == insertion_time:
-#                 segment = video.subclip(last_end, still_frame_time)
-#             else:
-#                 segment = video.subclip(last_end, insertion_time)
-#             clips.append(segment)
-#         if insertion_time >= last_end and still_frame_time is None:
-#             segment = video.subclip(last_end, insertion_time)
-#             clips.append(segment)
-
-#         if still_frame_time is not None and insertion_time == still_frame_time:
-#             still_frame = video.get_frame(still_frame_time)
-#             still_clip = ImageClip(still_frame).set_duration(audio_clip.duration)
-#             still_clip = still_clip.set_audio(audio_clip)
-#             clips.append(still_clip)
-#         elif still_frame_time is not None and still_frame_time != insertion_time:
-#             video_segment = video.subclip(insertion_time, still_frame_time)
-#             still_frame = video.get_frame(still_frame_time)
-#             still_clip = ImageClip(still_frame).set_duration(audio_clip.duration - (still_frame_time - insertion_time))
-#             combined_audio = CompositeAudioClip([video_segment.audio, audio_clip.set_start(0)])
-#             combined_video = concatenate_videoclips([video_segment, still_clip.set_start(still_frame_time - insertion_time)])
-#             combined_video = combined_video.set_audio(combined_audio)
-#             clips.append(combined_video)
-#         else:
-#             audio_clip = audio_clip.set_start(0)
-#             video_segment = video.subclip(insertion_time, insertion_time + audio_clip.duration)
-#             combined_audio = CompositeAudioClip([video_segment.audio, audio_clip])
-#             video_segment = video_segment.set_audio(combined_audio)
-#             clips.append(video_segment)
-
-#         new_no_speech_periods = []
-#         for start, end in no_speech_periods:
-#             if start <= insertion_time < end:
-#                 if start < insertion_time:
-#                     new_no_speech_periods.append((start, insertion_time))
-#                 if insertion_time + audio_clip.duration < end:
-#                     new_no_speech_periods.append((insertion_time + audio_clip.duration, end))
-#             else:
-#                 new_no_speech_periods.append((start, end))
-#         no_speech_periods = new_no_speech_periods
-#         logging.info(no_speech_periods)
-            
-#         added_timestamps.add(start_timestamp)
-
-#         last_end = still_frame_time if still_frame_time is not None else insertion_time + audio_clip.duration
-
-#     if last_end < int(video.duration):
-#         final_segment_end = int(video.duration)  # Use the last whole number
-#         final_segment = video.subclip(last_end, final_segment_end)
-#         clips.append(final_segment)
-
-#     final_clip = concatenate_videoclips(clips)
-#     final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
-
-#     logging.info(f"Final video created successfully. Duration: {final_clip.duration} seconds")

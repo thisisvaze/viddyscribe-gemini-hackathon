@@ -7,6 +7,8 @@
 /temp/
 /static/videos/
 .env
+/api/gckey.json
+/api/utils/gckey.json
 
 # testing
 /coverage

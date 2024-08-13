@@ -1,31 +1,43 @@
-import base64
-import vertexai
-from vertexai.generative_models import GenerativeModel, Part, FinishReason
-import vertexai.preview.generative_models as generative_models
-from fastapi import UploadFile, File  # Import FastAPI components
-import time 
-import warnings
-from moviepy.editor import VideoFileClip
 import os
-import aiofiles  # Import aiofiles for async file operations
+import json
+import subprocess
+import time
+import base64
+from moviepy.editor import VideoFileClip
+import warnings
+import vertexai
+from vertexai.generative_models import GenerativeModel, Part
+import vertexai.preview.generative_models as generative_models
+from google.oauth2 import service_account
+import google.auth.transport.requests
+
 
 # Suppress specific warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="moviepy")
 
-
-
 class VertexAIUtility():
     def __init__(self):
-        vertexai.init(project="planar-abbey-418313", location="us-central1")
+        vertexai.init(project="viddyscribe", location="us-east4")
+        #vertexai.init(project="planar-abbey-418313", location="us-central1")  # Initialize here
         self.proModel = GenerativeModel(
-                "gemini-1.5-pro-001",
-            )
+            "gemini-1.5-pro-001",
+        )
         self.flashModel = GenerativeModel(
-                "gemini-1.5-flash-001",
-            )
+            "gemini-1.5-flash-001",
+        )
         pass
 
+    def get_access_token(self):
+        credentials = service_account.Credentials.from_service_account_file(
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+            scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        )
+        request = google.auth.transport.requests.Request()
+        credentials.refresh(request)
+        return credentials.token
+
     def load_video(self, file_path):
+        #vertexai.init(project="planar-abbey-418313", location="us-central1")  # Initialize here
         # Load the video file synchronously
         with open(file_path, "rb") as f:
             video_data = f.read()
@@ -35,7 +47,15 @@ class VertexAIUtility():
         )
         return video1
     
+    def load_video_b64(self, file_path):
+        # Load the video file synchronously
+        with open(file_path, "rb") as f:
+            video_data = f.read()
+        encoded_video_data = base64.b64encode(video_data).decode('utf-8')
+        return encoded_video_data  # Return the base64 encoded video data
+
     def validate_video(self, file_path):
+        #vertexai.init(project="planar-abbey-418313", location="us-central1")  # Initialize here
         try:
             clip = VideoFileClip(file_path)
             duration = clip.duration
@@ -114,6 +134,95 @@ class VertexAIUtility():
         print({"Gemini response": result})
 
         return {"description": result}
+    
+    def get_info_from_video_curl(self, file_path, inst):
+        # Get the base64 encoded video data
+        encoded_video_data = self.load_video_b64(file_path)  # Use load_video_b64 to get base64 encoded data
+        # Prepare the JSON payload
+        payload = {
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [
+                        {
+                            "inlineData": {
+                                "mimeType": "video/mp4",
+                                "data": encoded_video_data  # Use the base64 encoded video data
+                            }
+                        },
+                        {
+                            "text": f"{inst}. Here is the video."
+                        }
+                    ]
+                }
+            ]
+        }
+
+        # Write the payload to a JSON file
+        with open('request.json', 'w') as json_file:
+            json.dump(payload, json_file)
+
+        # Obtain the access token using the service account key file
+        access_token = self.get_access_token()
+
+        # Prepare the curl command
+        curl_command = [
+            "curl",
+            "-X", "POST",
+            "-H", f"Authorization: Bearer {access_token}",  # Use the access token
+            "-H", "Content-Type: application/json",
+            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-central1/publishers/google/models/gemini-1.5-pro-001:streamGenerateContent",
+            "-d", "@request.json"  # Use the JSON file as the data source
+        ]
+
+        start_time = time.time()  # Start time measurement
+
+        # Execute the curl command
+        result = subprocess.run(curl_command, capture_output=True, text=True)
+        response = result.stdout
+
+        end_time = time.time()  # End time measurement
+        time_taken = end_time - start_time  # Calculate time taken
+        print(f"Time taken for response: {time_taken} seconds")  # Print time taken
+        print({"Gemini response": response})
+
+        return {"description": response}
+
+    def gemini_llm_curl(self, prompt, inst):
+        # Obtain the access token using the service account key file
+        access_token = self.get_access_token()
+
+        # Prepare the curl command
+        curl_command = [
+            "curl",
+            "-X", "POST",
+            "-H", f"Authorization: Bearer {access_token}",  # Use the access token
+            "-H", "Content-Type: application/json",
+            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-central1/publishers/google/models/gemini-1.5-flash-001:streamGenerateContent",
+            "-d", json.dumps({
+                "contents": {
+                    "role": "user",
+                    "parts": [
+                        {
+                            "text": f"{inst} {prompt}"
+                        }
+                    ]
+                }
+            })
+        ]
+
+        start_time = time.time()  # Start time measurement
+
+        # Execute the curl command
+        result = subprocess.run(curl_command, capture_output=True, text=True)
+        response = result.stdout
+
+        end_time = time.time()  # End time measurement
+        time_taken = end_time - start_time  # Calculate time taken
+        print(f"Time taken for response: {time_taken} seconds")  # Print time taken
+        print({"Gemini response": response})
+
+        return {"description": response}
 
 # Add a main function to test the get_info_from_video function
 if __name__ == "__main__":

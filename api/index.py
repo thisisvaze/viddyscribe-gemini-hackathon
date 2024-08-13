@@ -1,12 +1,15 @@
 import os
 import logging
+import statistics
 from typing import Optional
-from fastapi import FastAPI, UploadFile, File, HTTPException, BackgroundTasks,Request, Header, Depends, WebSocket, WebSocketDisconnect, Form
+from fastapi import FastAPI, UploadFile, File, HTTPException, BackgroundTasks, Request, Header, Depends, WebSocket, WebSocketDisconnect, Form
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.websockets import WebSocketState
 from pydub import AudioSegment
 from moviepy.editor import VideoFileClip
+from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 from api.utils.gemini import VertexAIUtility  
 from api.utils.text_to_speech import main_function
 from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
@@ -18,10 +21,7 @@ import json
 import subprocess
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-import logging
-from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
 
 class VideoRequest(BaseModel):
     add_bg_music: Optional[bool] = False
@@ -40,7 +40,6 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
-
 # Allow CORS
 app.add_middleware(
     CORSMiddleware,
@@ -52,22 +51,33 @@ app.add_middleware(
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-
 active_connections = {}
 # Store background tasks
 background_tasks_dict = {}
 
-
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
     await websocket.accept()
+    if client_id in active_connections:
+        logging.warning(f"Client {client_id} already has an active connection. Replacing the old connection.")
+        old_websocket = active_connections[client_id]
+        await old_websocket.close()
     active_connections[client_id] = websocket
+    logging.info(f"WebSocket connection established for client {client_id}")
     try:
         while True:
-            await websocket.receive_text()
+            try:
+                await asyncio.wait_for(websocket.receive_text(), timeout=30)
+            except asyncio.TimeoutError:
+                try:
+                    await websocket.send_text("ping")  # Keep the connection alive
+                except RuntimeError as e:
+                    logging.error(f"Error sending ping: {e}")
+                    break
     except WebSocketDisconnect:
-        del active_connections[client_id]
-
+        logging.info(f"WebSocket connection closed for client {client_id}")
+        if client_id in active_connections:
+            del active_connections[client_id]
 
 @app.post("/api/cancel_video")
 async def cancel_video(client_id: str = Header(..., alias="client_id")):
@@ -93,6 +103,21 @@ async def cancel_video(client_id: str = Header(..., alias="client_id")):
         logging.error(f"No active task found for client {client_id}")
         raise HTTPException(status_code=404, detail="No active task found for this client")
 
+@app.get("/api/check_status")
+async def check_status(client_id: str, file_name: Optional[str] = None):
+    if not file_name:
+        raise HTTPException(status_code=400, detail="file_name query parameter is required")
+    try:
+        # Check if the output file exists
+        output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file_name.split('.')[0]}_output.mp4"
+        if os.path.exists(output_path):
+            return {"status": "completed", "output_path": output_path}
+        else:
+            return {"status": "processing"}
+    except Exception as e:
+        logging.error(f"Error checking video status: {e}")
+        return {"status": "error", "message": str(e)}
+
 @app.get("/api/video_status")
 async def video_status(path: str):
     try:
@@ -106,7 +131,6 @@ async def video_status(path: str):
         logging.error(f"Error checking video status: {e}")
         return {"status": "error", "message": str(e)}
     
-    from fastapi import Request  # Add this import
 @app.post("/api/create_video")
 async def generate_endpoint(
     request: Request,  # Add this parameter
@@ -128,8 +152,8 @@ async def generate_endpoint(
         raise HTTPException(status_code=403, detail="Invalid API Key")
 
     # Check file extension
-    if not file.filename.endswith(".mp4"):
-        raise HTTPException(status_code=400, detail="Only MP4 files are supported")
+    if not file.filename.lower().endswith(".mp4"):
+        raise HTTPException(status_code=400, detail="Only .mp4 files are supported")
 
     # Check file size
     file_size = await file.read()
@@ -137,10 +161,8 @@ async def generate_endpoint(
         raise HTTPException(status_code=400, detail="File size exceeds 7MB limit")
     await file.seek(0)  # Reset file pointer after reading
 
-    start_time = time.time()
-    timestamp = int(start_time)  # Get the current timestamp
-    video_path = f"temp/{timestamp}_{file.filename}"
-    output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{timestamp}_{file.filename.split('.')[0]}_output.mp4"
+    video_path = f"temp/{client_id}_{file.filename}"
+    output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file.filename.split('.')[0]}_output.mp4"
     os.makedirs("temp", exist_ok=True)
     os.makedirs("/home/azureuser/viddyscribe-gemini-hackathon/static/videos", exist_ok=True)
 
@@ -167,24 +189,60 @@ async def generate_endpoint(
     
 async def process_video(video_path: str, output_path: str, client_id: str, add_bg_music: bool):
     try:
-        await asyncio.wait_for(main_function(video_path, output_path, add_bg_music), timeout=600)
+        result = await main_function(video_path, output_path, add_bg_music)
+        if result["status"] == "error":
+            logging.error(f"Error during video processing: {result['message']}")
+            if client_id in active_connections:
+                message = json.dumps({"status": "error", "message": result["message"]})
+                websocket = active_connections[client_id]
+                if websocket.application_state == WebSocketState.CONNECTED:
+                    await websocket.send_text(message)
+            return
+
         logging.info(f"Video processing completed for {video_path}")
         if client_id in active_connections:
             message = json.dumps({"status": "completed", "output_path": output_path})
-            await active_connections[client_id].send_text(message)
-            logging.info(f"Sent 'completed' message to client {client_id}")
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.send_text(message)
+                logging.info(f"Sent 'completed' message to client {client_id}")
+            else:
+                logging.error(f"WebSocket connection already closed for client {client_id}")
         else:
             logging.error(f"Client {client_id} not found in active connections")
     except asyncio.TimeoutError:
         logging.error("Video processing timed out")
+        if client_id in active_connections:
+            message = json.dumps({"status": "error", "message": "Video processing timed out"})
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.send_text(message)
     except asyncio.CancelledError:
         logging.info(f"Video processing cancelled for {video_path}")
+        if client_id in active_connections:
+            message = json.dumps({"status": "error", "message": "Video processing cancelled"})
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.send_text(message)
+    except ValueError as e:
+        logging.error(f"Error during video processing: {e}")
+        if client_id in active_connections:
+            message = json.dumps({"status": "error", "message": str(e)})
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.send_text(message)
+    except WebSocketDisconnect:
+        logging.info(f"WebSocket disconnected for client {client_id}")
     except Exception as e:
         logging.error(f"Error during video processing: {e}")
+        if client_id in active_connections:
+            message = json.dumps({"status": "error", "message": str(e)})
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.send_text(message)
     finally:
         # Cleanup temp directory
         temp_dir = "temp"
-        # Delete all audio files in temp directory
         for filename in os.listdir(temp_dir):
             if filename.endswith(('.wav', '.mp3', '.aac', '.flac', '.ogg', '.m4a')):
                 file_path = os.path.join(temp_dir, filename)
@@ -193,11 +251,15 @@ async def process_video(video_path: str, output_path: str, client_id: str, add_b
                     logging.info(f"Deleted audio file {file_path}")
                 except Exception as e:
                     logging.error(f"Failed to delete audio file {file_path}. Reason: {e}")
-        # Remove task from dictionary
-        if client_id in background_tasks_dict:
-            del background_tasks_dict[client_id]
+        # Ensure the WebSocket connection is closed after sending the message
+        if client_id in active_connections:
+            websocket = active_connections[client_id]
+            if websocket.application_state == WebSocketState.CONNECTED:
+                await websocket.close()
+            del active_connections[client_id]
+            logging.info(f"WebSocket connection closed for client {client_id}")
 
-
+            
 @app.get("/api/download")
 async def download_file(path: str):
     # Find the index of "static/videos/" in the provided path
@@ -212,10 +274,9 @@ async def download_file(path: str):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(trimmed_path)
 
-
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-	exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
-	logging.error(f"{request}: {exc_str}")
-	content = {'status_code': 10422, 'message': exc_str, 'data': None}
-	return JSONResponse(content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+    exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
+    logging.error(f"{request}: {exc_str}")
+    content = {'status_code': 10422, 'message': exc_str, 'data': None}
+    return JSONResponse(content=content, status_code=HTTP_422_UNPROCESSABLE_ENTITY)

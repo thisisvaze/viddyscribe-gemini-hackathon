@@ -83,9 +83,9 @@ Remember, your goal is to enhance the viewing experience for visually impaired a
 instructions_timestamp_format = """
 
 Below are timestamps with audio descriptions. Strictly reformat them in this format. The starting timestamp is in [MM:SS.MSS] format followed by the audio description. Followed by new line and so on.
-For eg. [0:02.100] Orange energy streaks through an ornate hallway lined with large lanterns. \n[0:08.250] A panda with a green wooden staff stands among broken lanterns. \n[0:10.100] Three figures are trapped inside one of the lanterns. A crocodile with red scales, a grey rhinoceros, and a white goat. \n[0:12.500] A line of animal warriors emerge from behind the lanterns. A bear, a water buffalo, and a snow leopard, radiating orange energy. \n
+For eg. [0:02.100] Description here. \n[0:08.250] Description here. \n[0:10.100] Description here. \n[0:12.500] Description here. \n
 
-Do not reply any extra text surrounding it. Here is the given timestamps.
+Do not reply any extra text surrounding it. Here is the given timestamps. If the below text doesn't appear to have timestamps, don't force it. Just reply no timestamps returned from Gemini.
 """
 
 instructions_silent_period = """You are an AI assistant specialized in creating audio description timestamps for videos. Your task is to analyze audio and generate precise timestamps for periods without language in audio. Follow these guidelines:

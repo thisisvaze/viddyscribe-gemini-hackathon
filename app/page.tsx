@@ -1,58 +1,144 @@
 'use client'
-
 import { useState, useCallback, useEffect, useRef } from "react";
 import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
 import Image from 'next/image';
+import Cookies from 'js-cookie';
+
+const getClientId = () => {
+  let clientId = Cookies.get('clientId');
+  if (!clientId) {
+    clientId = Date.now().toString();
+    Cookies.set('clientId', clientId, { expires: 7 }); // Set cookie to expire in 7 days
+  }
+  return clientId;
+};
+
+const clientId = getClientId(); // Retrieve or generate client ID
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [lastUploadedFileName, setLastUploadedFileName] = useState<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
-  const MAX_FILE_SIZE = 7 * 1024 * 1024; // 50MB
+  const MAX_FILE_SIZE = 7 * 1024 * 1024; // 7MB
   const [addBgMusic, setAddBgMusic] = useState(false);
-  const clientIdRef = useRef(Date.now().toString()); // Generate client ID once and store in ref
+  const socketRef = useRef<WebSocket | null>(null); // Use ref to store WebSocket instance
+  const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null); // Use ref to store polling interval
+  const wsTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Use ref to store WebSocket timeout
 
   useEffect(() => {
     const isProd = process.env.NODE_ENV === 'production';
-    const wsUrl = 'ws://localhost:8001/ws';
-    const socket = new WebSocket(`${wsUrl}?client_id=${clientIdRef.current}`);
+    const wsUrl = isProd ? 'wss://app.viddyscribe.com/ws' : 'ws://localhost:8000/ws';
+    const reconnectInterval = 5000; // 5 seconds
+    const pollingInterval = 5000; // 5 seconds
+    const wsTimeout = 30000; // 10 seconds
 
-    socket.onopen = () => {
-      console.log("Connected to WebSocket server");
-    };
-
-    socket.onmessage = (event) => {
-      console.log("Received message from WebSocket:", event.data);
-      const message = JSON.parse(event.data);
-      if (message.status === "completed") {
-        console.log("Received 'completed' event from WebSocket");
-        setLoading(false);
-        setProcessingStatus("Video processing completed");
-        setDownloadUrl(`api/download/?path=${message.output_path}`);
+    const checkVideoStatus = async () => {
+      if (!lastUploadedFileName) {
+        console.warn("No file name set for checking video status.");
+        return;
       }
-    };
-
-    socket.onclose = () => {
-      console.log("Disconnected from WebSocket server");
-    };
-
-    return () => {
-      socket.close();
-    };
-  }, [file]);
-
-  const handleCancel = async () => {
-    if (confirm("Are you sure you want to cancel? You will have to start the request again.")) {
       try {
-        window.location.reload();
+        const response = await axios.get(`/api/check_status`, {
+          params: { client_id: clientId, file_name: lastUploadedFileName }
+        });
+        const { status, output_path, message } = response.data;
+        if (status === "completed") {
+          setLoading(false);
+          setProcessingStatus("Video processing completed");
+          setDownloadUrl(`api/download/?path=${output_path}`);
+          if (pollingIntervalRef.current) {
+            clearInterval(pollingIntervalRef.current);
+          }
+        } else if (status === "error") {
+          setLoading(false);
+          setProcessingStatus(`Error: ${message}`);
+          if (pollingIntervalRef.current) {
+            clearInterval(pollingIntervalRef.current);
+          }
+        }
       } catch (error) {
-        console.error("Failed to cancel video processing", error);
-        alert("Failed to cancel video processing");
+        console.error("Error checking video status:", error);
       }
+    };
+  
+    const startPolling = () => {
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+      }
+      pollingIntervalRef.current = setInterval(checkVideoStatus, pollingInterval);
+    };
+
+    const connectWebSocket = () => {
+      console.log(`Connecting to WebSocket server at: ${wsUrl}?client_id=${clientId}`);
+      const socket = new WebSocket(`${wsUrl}?client_id=${clientId}`);
+      socketRef.current = socket; // Store WebSocket instance in ref
+
+      socket.onopen = () => {
+        console.log("Connected to WebSocket server");
+        if (wsTimeoutRef.current) {
+          clearTimeout(wsTimeoutRef.current);
+        }
+        wsTimeoutRef.current = setTimeout(startPolling, wsTimeout); // Start polling if no message received within timeout
+      };
+
+      socket.onmessage = (event) => {
+        console.log("Received message from WebSocket:", event.data);
+        if (event.data === "ping") {
+          console.log("Received 'ping' message from WebSocket");
+          return; // Ignore ping messages
+        }
+        const message = JSON.parse(event.data);
+        if (message.status === "completed") {
+          console.log("Received 'completed' event from WebSocket");
+          setLoading(false);
+          setProcessingStatus("Video processing completed");
+          setDownloadUrl(`api/download/?path=${message.output_path}`);
+          if (wsTimeoutRef.current) {
+            clearTimeout(wsTimeoutRef.current);
+          }
+        } else if (message.status === "error") {
+          console.log("Received 'error' event from WebSocket");
+          setLoading(false);
+          setProcessingStatus(`Error: ${message.message}`);
+          if (wsTimeoutRef.current) {
+            clearTimeout(wsTimeoutRef.current);
+          }
+        }
+      };
+
+      socket.onclose = (event) => {
+        console.log(`Disconnected from WebSocket server. Code: ${event.code}, Reason: ${event.reason}`);
+        if (event.code !== 1000) { // 1000 means normal closure
+          setTimeout(connectWebSocket, reconnectInterval); // Attempt to reconnect after a delay
+        } else {
+          startPolling(); // Fallback to polling if WebSocket connection fails
+        }
+      };
+
+      socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+        socket.close(); // Close the socket on error to trigger reconnection
+      };
+    };
+
+    connectWebSocket(); // Initial connection
+
+    
+  return () => {
+    if (socketRef.current) {
+      socketRef.current.close();
+    }
+    if (pollingIntervalRef.current) {
+      clearInterval(pollingIntervalRef.current);
+    }
+    if (wsTimeoutRef.current) {
+      clearTimeout(wsTimeoutRef.current);
     }
   };
+}, [file, lastUploadedFileName]); // Added lastUploadedFileName to dependencies
 
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -104,17 +190,20 @@ export default function Home() {
   const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
+
+  
   const handleUpload = async () => {
     if (!file) return;
     setLoading(true);
     setProcessingStatus("Uploading...");
     setDownloadUrl("");
+    setLastUploadedFileName(file.name);
     const VIDDYSCRIBE_API_KEY = process.env.VIDDYSCRIBE_API_KEY;
 
     const formData = new FormData();
     formData.append("file", file);
     formData.append("add_bg_music", addBgMusic.toString());
-    formData.append("client_id", clientIdRef.current);  // Add client_id to form data
+    formData.append("client_id", clientId);  // Use clientId directly
 
     // Log form data for debugging
     console.log("Form Data:", formData);
@@ -141,6 +230,17 @@ export default function Home() {
       console.error("Failed to start video processing", error);
       setLoading(false);
       setProcessingStatus("Error: Failed to start processing");
+    }
+  };
+
+  const handleCancel = async () => {
+    if (confirm("Are you sure you want to cancel? You will have to start the request again.")) {
+      try {
+        window.location.reload();
+      } catch (error) {
+        console.error("Failed to cancel video processing", error);
+        alert("Failed to cancel video processing");
+      }
     }
   };
 
@@ -191,7 +291,7 @@ export default function Home() {
           </label>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col align-center justify-center text-center">
         {processingStatus && (
           <p className={`text-zinc-100/70 font-bold text-sm ${processingStatus !== "Video processing completed" ? "blink-animation" : ""}`}>
             {processingStatus}
@@ -222,7 +322,6 @@ export default function Home() {
           </a>
         )}
       </div>
-
     </main>
   );
 }
