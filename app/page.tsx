@@ -34,7 +34,7 @@ export default function Home() {
     const reconnectInterval = 5000; // 5 seconds
     const pollingInterval = 5000; // 5 seconds
     const wsTimeout = 30000; // 10 seconds
-
+  
     const checkVideoStatus = async () => {
       if (!lastUploadedFileName) {
         console.warn("No file name set for checking video status.");
@@ -70,12 +70,12 @@ export default function Home() {
       }
       pollingIntervalRef.current = setInterval(checkVideoStatus, pollingInterval);
     };
-
+  
     const connectWebSocket = () => {
       console.log(`Connecting to WebSocket server at: ${wsUrl}?client_id=${clientId}`);
       const socket = new WebSocket(`${wsUrl}?client_id=${clientId}`);
       socketRef.current = socket; // Store WebSocket instance in ref
-
+  
       socket.onopen = () => {
         console.log("Connected to WebSocket server");
         if (wsTimeoutRef.current) {
@@ -83,7 +83,7 @@ export default function Home() {
         }
         wsTimeoutRef.current = setTimeout(startPolling, wsTimeout); // Start polling if no message received within timeout
       };
-
+  
       socket.onmessage = (event) => {
         console.log("Received message from WebSocket:", event.data);
         if (event.data === "ping") {
@@ -108,7 +108,7 @@ export default function Home() {
           }
         }
       };
-
+  
       socket.onclose = (event) => {
         console.log(`Disconnected from WebSocket server. Code: ${event.code}, Reason: ${event.reason}`);
         if (event.code !== 1000) { // 1000 means normal closure
@@ -117,28 +117,27 @@ export default function Home() {
           startPolling(); // Fallback to polling if WebSocket connection fails
         }
       };
-
+  
       socket.onerror = (error) => {
         console.error("WebSocket error:", error);
         socket.close(); // Close the socket on error to trigger reconnection
       };
     };
-
+  
     connectWebSocket(); // Initial connection
-
-    
-  return () => {
-    if (socketRef.current) {
-      socketRef.current.close();
-    }
-    if (pollingIntervalRef.current) {
-      clearInterval(pollingIntervalRef.current);
-    }
-    if (wsTimeoutRef.current) {
-      clearTimeout(wsTimeoutRef.current);
-    }
-  };
-}, [file, lastUploadedFileName]); // Added lastUploadedFileName to dependencies
+  
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.close();
+      }
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+      }
+      if (wsTimeoutRef.current) {
+        clearTimeout(wsTimeoutRef.current);
+      }
+    };
+  }, [lastUploadedFileName]);
 
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {

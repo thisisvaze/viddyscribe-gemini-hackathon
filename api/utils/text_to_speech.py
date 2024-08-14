@@ -336,6 +336,8 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
             fade_duration = 0.5
             bg_fade_duration = 0.2
             vid_max_volume = original_audio_clip.max_volume()
+            max_audio_desc_volume = audio_clip.max_volume()
+            ratio_scale = vid_max_volume/max_audio_desc_volume
             still_frame_volume = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time).max_volume()
             if add_bg_music:
                 # Extract audio using ffmpeg
@@ -352,9 +354,10 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
 
                 # Volume alignment and transition
                 generated_music_clip = AudioFileClip(music_path)
-                generated_music_clip = generated_music_clip.volumex(vid_max_volume*0.5).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex(vid_max_volume*0.5)
-    
-                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume), generated_music_clip.set_start(0)]
+                generated_music_clip_max_volume = generated_music_clip.max_volume()
+                generated_music_clip = generated_music_clip.volumex((vid_max_volume/generated_music_clip_max_volume)*0.5).audio_fadein(fade_duration).volumex(0.1).audio_fadeout(fade_duration).volumex((vid_max_volume/generated_music_clip_max_volume)*0.5)
+                
+                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume/max_audio_desc_volume), generated_music_clip.set_start(0)]
                 #combine all audio together
                 if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
                     faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)
@@ -368,7 +371,7 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
                 
             else:
                 still_frame_volume = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time).max_volume()
-                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume)]
+                combined_audio_clips = [still_clip.audio.volumex(vid_max_volume/max_audio_desc_volume)]
                 #combine all audio together
                 if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
                     faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)

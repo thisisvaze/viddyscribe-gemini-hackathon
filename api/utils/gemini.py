@@ -171,7 +171,7 @@ class VertexAIUtility():
             "-X", "POST",
             "-H", f"Authorization: Bearer {access_token}",  # Use the access token
             "-H", "Content-Type: application/json",
-            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-central1/publishers/google/models/gemini-1.5-pro-001:streamGenerateContent",
+            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-east4/publishers/google/models/gemini-1.5-pro-001:streamGenerateContent",
             "-d", "@request.json"  # Use the JSON file as the data source
         ]
 
@@ -198,7 +198,7 @@ class VertexAIUtility():
             "-X", "POST",
             "-H", f"Authorization: Bearer {access_token}",  # Use the access token
             "-H", "Content-Type: application/json",
-            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-central1/publishers/google/models/gemini-1.5-flash-001:streamGenerateContent",
+            "https://us-central1-aiplatform.googleapis.com/v1/projects/viddyscribe/locations/us-east4/publishers/google/models/gemini-1.5-flash-001:streamGenerateContent",
             "-d", json.dumps({
                 "contents": {
                     "role": "user",
