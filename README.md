@@ -19,13 +19,8 @@ The application allows users to upload video files, which are then processed to 
 
 ## Demo
 
-https://viddyscribe.vercel.app/
+https://viddyscribe.com/
 
-## Deploy Your Own
-
-You can clone & deploy it to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-repo%2Fviddyscribe)
 
 ## Developing Locally
 
