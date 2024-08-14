@@ -3146,3 +3146,87 @@ INFO:     ('127.0.0.1', 53040) - "WebSocket /ws?client_id=1723253700782" [accept
 2024-08-14 17:44:38,540 - INFO - WebSocket connection established for client 1723253700782
 INFO:     connection open
 INFO:     connection open
+INFO:     ('127.0.0.1', 45702) - "WebSocket /ws?client_id=1723253700782" [accepted]
+2024-08-14 17:47:13,278 - WARNING - Client 1723253700782 already has an active connection. Replacing the old connection.
+INFO:     ('127.0.0.1', 45702) - "WebSocket /ws?client_id=1723253700782" [accepted]
+2024-08-14 17:47:13,278 - WARNING - Client 1723253700782 already has an active connection. Replacing the old connection.
+INFO:     connection open
+INFO:     connection open
+2024-08-14 17:47:13,320 - INFO - WebSocket connection established for client 1723253700782
+2024-08-14 17:47:13,320 - INFO - WebSocket connection established for client 1723253700782
+INFO:     connection closed
+2024-08-14 17:47:13,321 - INFO - WebSocket connection closed for client 1723253700782
+INFO:     connection closed
+2024-08-14 17:47:13,321 - INFO - WebSocket connection closed for client 1723253700782
+2024-08-14 17:47:14,759 - INFO - WebSocket connection closed for client 1723253700782
+2024-08-14 17:47:14,759 - INFO - WebSocket connection closed for client 1723253700782
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 37382) - "WebSocket /ws?client_id=1723258308338" [accepted]
+2024-08-14 17:53:27,121 - INFO - WebSocket connection established for client 1723258308338
+INFO:     ('127.0.0.1', 37382) - "WebSocket /ws?client_id=1723258308338" [accepted]
+2024-08-14 17:53:27,121 - INFO - WebSocket connection established for client 1723258308338
+INFO:     connection open
+INFO:     connection open
+INFO:     ('127.0.0.1', 37390) - "WebSocket /ws?client_id=1723258308338" [accepted]
+INFO:     ('127.0.0.1', 37390) - "WebSocket /ws?client_id=1723258308338" [accepted]
+2024-08-14 17:53:27,295 - WARNING - Client 1723258308338 already has an active connection. Replacing the old connection.
+2024-08-14 17:53:27,295 - WARNING - Client 1723258308338 already has an active connection. Replacing the old connection.
+INFO:     connection open
+INFO:     connection open
+2024-08-14 17:53:27,378 - INFO - WebSocket connection closed for client 1723258308338
+2024-08-14 17:53:27,378 - INFO - WebSocket connection closed for client 1723258308338
+2024-08-14 17:53:27,378 - INFO - WebSocket connection established for client 1723258308338
+INFO:     connection closed
+2024-08-14 17:53:27,378 - INFO - WebSocket connection established for client 1723258308338
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2024-08-14 17:53:28,116 - INFO - WebSocket connection closed for client 1723258308338
+2024-08-14 17:53:28,116 - INFO - WebSocket connection closed for client 1723258308338
+INFO:     ('127.0.0.1', 40842) - "WebSocket /ws?client_id=1723383293496" [accepted]
+INFO:     ('127.0.0.1', 40842) - "WebSocket /ws?client_id=1723383293496" [accepted]
+2024-08-14 18:38:40,881 - INFO - WebSocket connection established for client 1723383293496
+2024-08-14 18:38:40,881 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+2024-08-14 19:25:40,301 - INFO - WebSocket connection closed for client 1723383293496
+2024-08-14 19:25:40,301 - INFO - WebSocket connection closed for client 1723383293496
+INFO:     ('127.0.0.1', 35200) - "WebSocket /ws?client_id=1723383293496" [accepted]
+INFO:     ('127.0.0.1', 35200) - "WebSocket /ws?client_id=1723383293496" [accepted]
+2024-08-14 19:25:45,716 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+2024-08-14 19:25:45,716 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+2024-08-14 19:26:25,720 - INFO - WebSocket connection closed for client 1723383293496
+2024-08-14 19:26:25,720 - INFO - WebSocket connection closed for client 1723383293496
+INFO:     ('127.0.0.1', 33064) - "WebSocket /ws?client_id=1723383293496" [accepted]
+INFO:     ('127.0.0.1', 33064) - "WebSocket /ws?client_id=1723383293496" [accepted]
+2024-08-14 20:05:58,482 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+2024-08-14 20:05:58,482 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+2024-08-14 20:15:53,368 - INFO - WebSocket connection closed for client 1723605174653
+2024-08-14 20:15:53,368 - INFO - WebSocket connection closed for client 1723605174653
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 42056) - "WebSocket /ws?client_id=1723253700782" [accepted]
+INFO:     ('127.0.0.1', 42056) - "WebSocket /ws?client_id=1723253700782" [accepted]
+2024-08-14 20:38:54,724 - INFO - WebSocket connection established for client 1723253700782
+INFO:     connection open
+2024-08-14 20:38:54,724 - INFO - WebSocket connection established for client 1723253700782
+INFO:     connection open
+2024-08-14 20:45:49,589 - INFO - WebSocket connection closed for client 1723253700782
+2024-08-14 20:45:49,589 - INFO - WebSocket connection closed for client 1723253700782
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 47464) - "WebSocket /ws?client_id=1723253700782" [accepted]
+INFO:     ('127.0.0.1', 47464) - "WebSocket /ws?client_id=1723253700782" [accepted]
+2024-08-14 20:45:49,830 - INFO - WebSocket connection established for client 1723253700782
+2024-08-14 20:45:49,830 - INFO - WebSocket connection established for client 1723253700782
+INFO:     connection open
+INFO:     connection open
