@@ -4,6 +4,13 @@ import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
 import Image from 'next/image';
 import Cookies from 'js-cookie';
+import crypto from 'crypto';
+
+
+
+const generateHash = (input: string) => {
+  return crypto.createHash('sha256').update(input).digest('hex').slice(0, 10);
+};
 
 const getClientId = () => {
   let clientId = Cookies.get('clientId');
@@ -20,6 +27,7 @@ export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [lastUploadedFileName, setLastUploadedFileName] = useState<string | null>(null);
+  const lastUploadedFileNameRef = useRef<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
   const MAX_FILE_SIZE = 7 * 1024 * 1024; // 7MB
@@ -36,13 +44,13 @@ export default function Home() {
     const wsTimeout = 30000; // 10 seconds
   
     const checkVideoStatus = async () => {
-      if (!lastUploadedFileName) {
+      if (!lastUploadedFileNameRef.current) {
         console.warn("No file name set for checking video status.");
         return;
       }
       try {
         const response = await axios.get(`/api/check_status`, {
-          params: { client_id: clientId, file_name: lastUploadedFileName }
+          params: { client_id: clientId, file_name: lastUploadedFileNameRef.current }
         });
         const { status, output_path, message } = response.data;
         if (status === "completed") {
@@ -196,11 +204,18 @@ export default function Home() {
     setLoading(true);
     setProcessingStatus("Uploading...");
     setDownloadUrl("");
-    setLastUploadedFileName(file.name);
+    const hash = generateHash(file.name + Date.now().toString());
+    const hashedFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${hash}${file.name.match(/\.[^/.]+$/)?.[0]}`;
+    setLastUploadedFileName(hashedFileName);
+    lastUploadedFileNameRef.current = hashedFileName;
     const VIDDYSCRIBE_API_KEY = process.env.VIDDYSCRIBE_API_KEY;
 
+    // Create a new File object with the hashed filename
+    const hashedFile = new File([file], hashedFileName, { type: file.type });
+
+
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", hashedFile);
     formData.append("add_bg_music", addBgMusic.toString());
     formData.append("client_id", clientId);  // Use clientId directly
 

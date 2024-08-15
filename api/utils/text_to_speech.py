@@ -44,7 +44,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gckey_path
 
 
 if __name__ != "__main__":
-    from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period, instructions_timestamp_format
+    from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period, instructions_timestamp_format,insturctions_combined_format
     from api.utils.gemini import VertexAIUtility 
 
 # Configure logging
@@ -229,9 +229,16 @@ def get_audio_desc_util(video_path):
     # time.sleep(4)
     # video = v.load_video(video_path)
     # response_audio_desc = v.get_info_from_video_curl(video, dynamic_instructions_chain_2)
-    response = v.get_info_from_video_curl(video_path, instructions_chain_1)
-    dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
-    response_audio_desc = v.get_info_from_video_curl(video_path, dynamic_instructions_chain_2)
+    
+    # Prompt chaining
+    # response = v.get_info_from_video_curl(video_path, instructions_chain_1)
+    # dynamic_instructions_chain_2 = instructions_chain_2.replace("[Insert the output from Prompt 1 here]", response["description"])
+    # response_audio_desc = v.get_info_from_video_curl(video_path, dynamic_instructions_chain_2)
+    # reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
+    # return reformmated_desc
+
+    # Combined prompt
+    response_audio_desc = v.get_info_from_video_curl(video_path, insturctions_combined_format)
     reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
     return reformmated_desc
  
