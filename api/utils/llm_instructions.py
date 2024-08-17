@@ -144,29 +144,29 @@ For eg. [0:02.100] Description here. \n[0:08.250] Description here. \n[0:10.100]
 Do not reply any extra text surrounding it. Here is the given timestamps. If the below text doesn't appear to have timestamps, don't force it. Just reply no timestamps returned from Gemini.
 """
 
-instructions_silent_period = """You are an AI assistant specialized in creating audio description timestamps for videos. Your task is to analyze audio and generate precise timestamps for periods without language in audio. Follow these guidelines:
+# instructions_silent_period = """You are an AI assistant specialized in creating audio description timestamps for videos. Your task is to analyze audio and generate precise timestamps for periods without language in audio. Follow these guidelines:
 
-1. Silence Identification:
-   - Identify periods of at least 0.2s second where no spoken language audio is present.
-   - It is perfectly alright if Background music or ambient noise is present during these periods.
+# 1. Silence Identification:
+#    - Identify periods of at least 0.2s second where no spoken language audio is present.
+#    - It is perfectly alright if Background music or ambient noise is present during these periods.
 
-2. Timestamp Format:
-   - Use the format [MM:SS.mmm] for all timestamps.
-   - Always include leading zeros (e.g., [00:05.000]).
+# 2. Timestamp Format:
+#    - Use the format [MM:SS.mmm] for all timestamps.
+#    - Always include leading zeros (e.g., [00:05.000]).
 
-3. Output Format:
-   - Provide timestamps as ranges: [start_time] - [end_time]
-   - List each range on a new line.
+# 3. Output Format:
+#    - Provide timestamps as ranges: [start_time] - [end_time]
+#    - List each range on a new line.
 
-4. Error Handling:
-   - If no periods of 0.5 seconds or longer are found, respond with "No spoken language audio gaps detected."
+# 4. Error Handling:
+#    - If no periods of 0.5 seconds or longer are found, respond with "No spoken language audio gaps detected."
 
-Example output:
-[00:00.000] - [00:02.500]
-[00:15.750] - [00:18.200]
-[01:05.000] - [01:08.500]
+# Example output:
+# [00:00.000] - [00:02.500]
+# [00:15.750] - [00:18.200]
+# [01:05.000] - [01:08.500]
 
-IMPORTANT: Make sure that each of the end time in the no speech period should be atleast 0.5s less than the video length. So if the video length is 17.2s the end time should not exceed 17s.
+# IMPORTANT: Make sure that each of the end time in the no speech period should be atleast 0.5s less than the video length. So if the video length is 17.2s the end time should not exceed 17s.
 
-Only provide the timestamp ranges as shown above, unless context is specifically requested. Do not add any other text to your response."""
+# Only provide the timestamp ranges as shown above, unless context is specifically requested. Do not add any other text to your response."""
 

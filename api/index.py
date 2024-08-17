@@ -12,7 +12,7 @@ from moviepy.editor import VideoFileClip
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 from api.utils.gemini import VertexAIUtility  
 from api.utils.text_to_speech import main_function
-from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
+from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2
 import uvicorn
 import shutil
 import asyncio
