@@ -12,7 +12,7 @@ from moviepy.editor import VideoFileClip
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 from api.utils.gemini import VertexAIUtility  
 from api.utils.text_to_speech import main_function
-from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2, instructions_silent_period
+from api.utils.llm_instructions import instructions_chain_1, instructions_chain_2
 import uvicorn
 import shutil
 import asyncio
@@ -33,7 +33,7 @@ gckey_path = os.path.join(script_dir, "gckey.json")
 
 # Set the environment variable for Google Cloud authentication
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gckey_path
-
+app_folder_location = "a-test"
 security = HTTPBearer()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -109,7 +109,7 @@ async def check_status(client_id: str, file_name: Optional[str] = None):
         raise HTTPException(status_code=400, detail="file_name query parameter is required")
     try:
         # Check if the output file exists
-        output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file_name.split('.')[0]}_output.mp4"
+        output_path = f"/home/azureuser/{app_folder_location}/static/videos/{client_id}_{file_name.split('.')[0]}_output.mp4"
         if os.path.exists(output_path):
             return {"status": "completed", "output_path": output_path}
         else:
@@ -162,9 +162,9 @@ async def generate_endpoint(
     await file.seek(0)  # Reset file pointer after reading
 
     video_path = f"temp/{client_id}_{file.filename}"
-    output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file.filename.split('.')[0]}_output.mp4"
+    output_path = f"/home/azureuser/{app_folder_location}/static/videos/{client_id}_{file.filename.split('.')[0]}_output.mp4"
     os.makedirs("temp", exist_ok=True)
-    os.makedirs("/home/azureuser/viddyscribe-gemini-hackathon/static/videos", exist_ok=True)
+    os.makedirs(f"/home/azureuser/{app_folder_location}/static/videos", exist_ok=True)
 
     try:
         with open(video_path, "wb") as buffer:

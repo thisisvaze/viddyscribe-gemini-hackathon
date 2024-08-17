@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "fastapi-dev": "./start-fastapi.sh",
-    "next-dev": "next dev",
+    "next-dev": "next dev -p 3001",
     "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "start:pm2": "pm2 start npm --name \"nextjs-fastapi\" -- run start:concurrent",
     "start:concurrent": "concurrently \"npm run start:next\" \"npm run start:fastapi\"",
-    "start:next": "next start",
+    "start:next": "next start -p 3001",
     "start:fastapi": "./start-fastapi.sh"
   },
   "dependencies": {

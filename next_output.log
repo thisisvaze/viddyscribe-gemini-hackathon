@@ -1,31 +1,11 @@
-(node:242327) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:242327) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Creating an optimized production build...
-- info Creating an optimized production build...
-- info Compiled successfully
-- info Compiled successfully
-- info Linting and checking validity of types...
-- info Linting and checking validity of types...
 
 ./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 
 ./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 - info Collecting page data...
@@ -45,92 +25,12 @@ info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/d
 
 
 Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
+┌ ○ /                                      152 kB          230 kB
 └ ○ /favicon.ico                           0 B                0 B
 + First Load JS shared by all              77.3 kB
   ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
   ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Creating an optimized production build...
-- info Creating an optimized production build...
-- info Compiled successfully
-- info Compiled successfully
-- info Linting and checking validity of types...
-- info Linting and checking validity of types...
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-- info Collecting page data...
-- info Collecting page data...
-- info Generating static pages (0/4)
-- info Generating static pages (0/4)
-- info Generating static pages (1/4)
-- info Generating static pages (1/4)
-- info Generating static pages (2/4)
-- info Generating static pages (2/4)
-- info Generating static pages (3/4)
-- info Generating static pages (3/4)
-- info Generating static pages (4/4)
-- info Generating static pages (4/4)
-- info Finalizing page optimization...
-- info Finalizing page optimization...
-
-
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
+  ├ chunks/main-app-75454db7db4b0c63.js    216 B
   └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
 
 Route (pages)                              Size     First Load JS
@@ -141,212 +41,12 @@ Route (pages)                              Size     First Load JS
   ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
   └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
 Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
+┌ ○ /                                      152 kB          230 kB
 └ ○ /favicon.ico                           0 B                0 B
 + First Load JS shared by all              77.3 kB
   ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
   ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-
-> nextjs-fastapi@0.1.0 start:next
-> next start
-
-
-> nextjs-fastapi@0.1.0 start:next
-> next start
-
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-(node:479671) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:479671) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:479682) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:479682) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Creating an optimized production build...
-- info Creating an optimized production build...
-- info Compiled successfully
-- info Compiled successfully
-- info Linting and checking validity of types...
-- info Linting and checking validity of types...
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-- info Collecting page data...
-- info Collecting page data...
-- info Generating static pages (0/4)
-- info Generating static pages (0/4)
-- info Generating static pages (1/4)
-- info Generating static pages (1/4)
-- info Generating static pages (2/4)
-- info Generating static pages (2/4)
-- info Generating static pages (3/4)
-- info Generating static pages (3/4)
-- info Generating static pages (4/4)
-- info Generating static pages (4/4)
-- info Finalizing page optimization...
-- info Finalizing page optimization...
-
-
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
-
-
-> nextjs-fastapi@0.1.0 start:next
-> next start
-
-
-> nextjs-fastapi@0.1.0 start:next
-> next start
-
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-(node:494675) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:494675) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:494697) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:494697) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-
-> nextjs-fastapi@0.1.0 build
-> next build
-
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- info Creating an optimized production build...
-- info Creating an optimized production build...
-- info Compiled successfully
-- info Compiled successfully
-- info Linting and checking validity of types...
-- info Linting and checking validity of types...
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-
-./app/page.tsx
-187:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-- info Collecting page data...
-- info Collecting page data...
-- info Generating static pages (0/4)
-- info Generating static pages (0/4)
-- info Generating static pages (1/4)
-- info Generating static pages (1/4)
-- info Generating static pages (2/4)
-- info Generating static pages (2/4)
-- info Generating static pages (3/4)
-- info Generating static pages (3/4)
-- info Generating static pages (4/4)
-- info Generating static pages (4/4)
-- info Finalizing page optimization...
-- info Finalizing page optimization...
-
-
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-
-Route (pages)                              Size     First Load JS
-─ ○ /404                                   181 B            79 kB
-+ First Load JS shared by all              78.9 kB
-  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
-  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
-  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
-  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
-Route (app)                                Size     First Load JS
-┌ ○ /                                      28.9 kB         106 kB
-└ ○ /favicon.ico                           0 B                0 B
-+ First Load JS shared by all              77.3 kB
-  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
-  ├ chunks/488-25a9407307105f18.js         24.8 kB
-  ├ chunks/main-app-c4c52cf64b709966.js    213 B
+  ├ chunks/main-app-75454db7db4b0c63.js    216 B
   └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
 
 Route (pages)                              Size     First Load JS
@@ -364,17 +64,2045 @@ Route (pages)                              Size     First Load JS
 
 
 > nextjs-fastapi@0.1.0 start:next
-> next start
+> next start -p 3001
 
 
 > nextjs-fastapi@0.1.0 start:next
-> next start
+> next start -p 3001
 
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- ready started server on 0.0.0.0:3000, url: http://localhost:3000
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-- [36minfo[39m Loaded env from /home/azureuser/viddyscribe-gemini-hackathon/.env
-(node:499176) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/test-viddyscribe/.env
+- [36minfo[39m Loaded env from /home/azureuser/test-viddyscribe/.env
+(node:646880) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:499176) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(node:646880) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:646891) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:646891) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/test-viddyscribe/.env
+- info Loaded env from /home/azureuser/test-viddyscribe/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      152 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-75454db7db4b0c63.js    216 B
+  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      152 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-75454db7db4b0c63.js    216 B
+  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-b88a7f5271e73b24.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/test-viddyscribe/.env
+- [36minfo[39m Loaded env from /home/azureuser/test-viddyscribe/.env
+(node:709373) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:709373) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:709391) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:709391) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+(node:754264) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:754264) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-ebeb1be90d319854.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-ebeb1be90d319854.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-ebeb1be90d319854.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-ebeb1be90d319854.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:754776) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:754776) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:754888) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:754888) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:778294) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:778294) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:778316) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:778316) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:161662) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:161662) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:161673) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:161673) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723831401626&file_name=shoes_ad_f331e2aa31.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723831401626&file_name=shoes_ad_f331e2aa31.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:210558) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:210558) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:210569) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:210569) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:440086) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:440086) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:440097) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:440097) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:444372) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:444372) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:444383) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:444383) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:448654) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:448654) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:448665) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:448665) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:449435) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:449435) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:449446) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:449446) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_0621bcad4d.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:460129) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:460129) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:462346) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:462346) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:462357) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:462357) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:471652) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:471652) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:471663) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:471663) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:491412) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:491412) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:491423) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:491423) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:493410) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:493410) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:493421) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:493421) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+
+> nextjs-fastapi@0.1.0 build
+> next build
+
+- info Loaded env from /home/azureuser/a-test/.env
+- info Loaded env from /home/azureuser/a-test/.env
+- info Creating an optimized production build...
+- info Creating an optimized production build...
+- info Compiled successfully
+- info Compiled successfully
+- info Linting and checking validity of types...
+- info Linting and checking validity of types...
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+./app/page.tsx
+195:6  Warning: React Hook useCallback has a missing dependency: 'MAX_FILE_SIZE'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+- info Collecting page data...
+- info Collecting page data...
+- info Generating static pages (0/4)
+- info Generating static pages (0/4)
+- info Generating static pages (1/4)
+- info Generating static pages (1/4)
+- info Generating static pages (2/4)
+- info Generating static pages (2/4)
+- info Generating static pages (3/4)
+- info Generating static pages (3/4)
+- info Generating static pages (4/4)
+- info Generating static pages (4/4)
+- info Finalizing page optimization...
+- info Finalizing page optimization...
+
+
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+Route (app)                                Size     First Load JS
+┌ ○ /                                      153 kB          230 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              77.3 kB
+  ├ chunks/2443530c-367bc5426ec9b96c.js    50.6 kB
+  ├ chunks/488-25a9407307105f18.js         24.8 kB
+  ├ chunks/main-app-4d6e1601ef76ea93.js    215 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B            79 kB
++ First Load JS shared by all              78.9 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45.1 kB
+  ├ chunks/main-997b4e786c9ad325.js        31.9 kB
+  ├ chunks/pages/_app-b555d5e1eab47959.js  194 B
+  └ chunks/webpack-215630d673983c6a.js     1.74 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+
+> nextjs-fastapi@0.1.0 start:next
+> next start -p 3001
+
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+- [36minfo[39m Loaded env from /home/azureuser/a-test/.env
+(node:494509) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:494509) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:494520) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:494520) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Failed to proxy http://127.0.0.1:8001/api/check_status?client_id=1723670524218&file_name=shoes_ad_959b34f41e.mp4 Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:8001
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)[39m {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m8001[39m
+}

@@ -4,6 +4,13 @@ import { ChangeEvent, DragEvent } from "react";
 import axios from "axios";
 import Image from 'next/image';
 import Cookies from 'js-cookie';
+import crypto from 'crypto';
+
+
+
+const generateHash = (input: string) => {
+  return crypto.createHash('sha256').update(input).digest('hex').slice(0, 10);
+};
 
 const getClientId = () => {
   let clientId = Cookies.get('clientId');
@@ -20,6 +27,7 @@ export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [lastUploadedFileName, setLastUploadedFileName] = useState<string | null>(null);
+  const lastUploadedFileNameRef = useRef<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
   const MAX_FILE_SIZE = 7 * 1024 * 1024; // 7MB
@@ -30,19 +38,19 @@ export default function Home() {
 
   useEffect(() => {
     const isProd = process.env.NODE_ENV === 'production';
-    const wsUrl = isProd ? 'wss://app.viddyscribe.com/ws' : 'ws://localhost:8000/ws';
+    const wsUrl = isProd ? 'wss://testing.viddyscribe.com/ws' : 'ws://localhost:8001/ws';
     const reconnectInterval = 5000; // 5 seconds
     const pollingInterval = 5000; // 5 seconds
     const wsTimeout = 30000; // 10 seconds
-  
+
     const checkVideoStatus = async () => {
-      if (!lastUploadedFileName) {
+      if (!lastUploadedFileNameRef.current) {
         console.warn("No file name set for checking video status.");
         return;
       }
       try {
         const response = await axios.get(`/api/check_status`, {
-          params: { client_id: clientId, file_name: lastUploadedFileName }
+          params: { client_id: clientId, file_name: lastUploadedFileNameRef.current }
         });
         const { status, output_path, message } = response.data;
         if (status === "completed") {
@@ -63,19 +71,19 @@ export default function Home() {
         console.error("Error checking video status:", error);
       }
     };
-  
+
     const startPolling = () => {
       if (pollingIntervalRef.current) {
         clearInterval(pollingIntervalRef.current);
       }
       pollingIntervalRef.current = setInterval(checkVideoStatus, pollingInterval);
     };
-  
+
     const connectWebSocket = () => {
       console.log(`Connecting to WebSocket server at: ${wsUrl}?client_id=${clientId}`);
       const socket = new WebSocket(`${wsUrl}?client_id=${clientId}`);
       socketRef.current = socket; // Store WebSocket instance in ref
-  
+
       socket.onopen = () => {
         console.log("Connected to WebSocket server");
         if (wsTimeoutRef.current) {
@@ -83,7 +91,7 @@ export default function Home() {
         }
         wsTimeoutRef.current = setTimeout(startPolling, wsTimeout); // Start polling if no message received within timeout
       };
-  
+
       socket.onmessage = (event) => {
         console.log("Received message from WebSocket:", event.data);
         if (event.data === "ping") {
@@ -108,7 +116,7 @@ export default function Home() {
           }
         }
       };
-  
+
       socket.onclose = (event) => {
         console.log(`Disconnected from WebSocket server. Code: ${event.code}, Reason: ${event.reason}`);
         if (event.code !== 1000) { // 1000 means normal closure
@@ -117,15 +125,15 @@ export default function Home() {
           startPolling(); // Fallback to polling if WebSocket connection fails
         }
       };
-  
+
       socket.onerror = (error) => {
         console.error("WebSocket error:", error);
         socket.close(); // Close the socket on error to trigger reconnection
       };
     };
-  
+
     connectWebSocket(); // Initial connection
-  
+
     return () => {
       if (socketRef.current) {
         socketRef.current.close();
@@ -190,17 +198,24 @@ export default function Home() {
     event.preventDefault();
   };
 
-  
+
   const handleUpload = async () => {
     if (!file) return;
     setLoading(true);
     setProcessingStatus("Uploading...");
     setDownloadUrl("");
-    setLastUploadedFileName(file.name);
+    const hash = generateHash(file.name + Date.now().toString());
+    const hashedFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${hash}${file.name.match(/\.[^/.]+$/)?.[0]}`;
+    setLastUploadedFileName(hashedFileName);
+    lastUploadedFileNameRef.current = hashedFileName;
     const VIDDYSCRIBE_API_KEY = process.env.VIDDYSCRIBE_API_KEY;
 
+    // Create a new File object with the hashed filename
+    const hashedFile = new File([file], hashedFileName, { type: file.type });
+
+
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", hashedFile);
     formData.append("add_bg_music", addBgMusic.toString());
     formData.append("client_id", clientId);  // Use clientId directly
 
@@ -243,16 +258,59 @@ export default function Home() {
     }
   };
 
+  const handleSampleVideoSelect = (videoPath: string, videoName: string) => {
+    fetch(videoPath)
+      .then(response => response.blob())
+      .then(blob => {
+        const file = new File([blob], videoName, { type: 'video/mp4' });
+        setFile(file);
+      })
+      .catch(error => console.error("Error loading sample video:", error));
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start gap-12 lg:gap-24  px-4 lg:px-24 pt-6 lg:pt-12 pb-12 lg:pb-24">
-      <div className="flex flex-col items-center">
-        <Image src="/viddy_logo.png" alt="ViddyScribe Logo" width={90} height={90} className="lg:h-32 lg:w-32 h-12 w-12" />
-        <p className="text-4xl text-zinc-100 font-bold text-center mt-8">ViddyScribe</p>
-        <p className="text-sm lg:text-lg text-zinc-100/50  text-center mt-3">Add Audio description to videos with AI</p>
+    <main className="flex min-h-screen flex-col items-center justify-start gap-12  px-4 lg:px-24 pt-6 lg:pt-12 pb-12 lg:pb-24">
+     <div className="flex flex-row items-center">
+      
+      <div className="items-center justify-center">
+        <div className="flex flex-row items-center justify-center gap-2">
+        <Image src="/viddy_logo.png" alt="ViddyScribe Logo" width={90} height={90} className=" h-12 w-12" />
+        <p className="text-4xl text-zinc-100 text-center font-bold">ViddyScribe</p>
+        </div>
+        <p className="text-sm lg:text-lg text-zinc-100/50 mt-1">Add Audio description to videos with AI</p>
       </div>
-      <div>
+    </div>
+
+      
+
+      <div className="max-w-xl w-full">
+      <div className="flex flex-col items-center my-10">
+          <p className="text-zinc-400 text-center mb-4">Choose a sample video or try your own</p>
+          <div className="grid grid-cols-2 gap-4">
+            <div
+              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'shoes_ad.mp4' ? 'bg-zinc-700' : 'bg-zinc-800'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={() => !loading && handleSampleVideoSelect('/static/test_videos/shoes_ad.mp4', 'shoes_ad.mp4')}
+            >
+              <video className="w-full rounded-lg" controls>
+                <source src="/static/test_videos/shoes_ad.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p className="text-zinc-100 mt-2">Shoes Ad</p>
+            </div>
+            <div
+              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'all_star.mp4' ? 'bg-zinc-700' : 'bg-zinc-800'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={() => !loading && handleSampleVideoSelect('/static/test_videos/all_star.mp4', 'all_star.mp4')}
+            >
+              <video className="w-full rounded-lg" controls>
+                <source src="/static/test_videos/all_star.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p className="text-zinc-100 mt-2">All Star</p>
+            </div>
+          </div>
+        </div>
         <div
-          className={`p-8 lg:p-20 border-2 transition-all border-white/50 border-dashed rounded-xl text-center cursor-pointer text-zinc-100/70 ${file ? 'bg-zinc-700 hover:bg-zinc-800 border-none' : 'bg-zinc-900 hover:bg-zinc-800'} ${loading ? 'opacity-70' : ''}`}
+          className={`p-8 lg:p-12 border-2 transition-all border-white/50 border-dashed rounded-xl text-center cursor-pointer text-zinc-100/70 ${file ? 'bg-zinc-700 hover:bg-zinc-800 border-none' : 'bg-zinc-900 hover:bg-zinc-800'} ${loading ? 'opacity-70' : ''}`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onClick={() => {
