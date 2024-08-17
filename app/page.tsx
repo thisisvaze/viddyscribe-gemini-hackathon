@@ -30,7 +30,7 @@ export default function Home() {
   const lastUploadedFileNameRef = useRef<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
-  const MAX_FILE_SIZE = 7 * 1024 * 1024; // 7MB
+  const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
   const [addBgMusic, setAddBgMusic] = useState(false);
   const socketRef = useRef<WebSocket | null>(null); // Use ref to store WebSocket instance
   const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null); // Use ref to store polling interval
@@ -56,7 +56,8 @@ export default function Home() {
         if (status === "completed") {
           setLoading(false);
           setProcessingStatus("Video processing completed");
-          setDownloadUrl(`api/download/?path=${output_path}`);
+          const encodedPath = encodeURIComponent(output_path);
+          setDownloadUrl(`api/download/?path=${encodedPath}`);
           if (pollingIntervalRef.current) {
             clearInterval(pollingIntervalRef.current);
           }
@@ -103,7 +104,8 @@ export default function Home() {
           console.log("Received 'completed' event from WebSocket");
           setLoading(false);
           setProcessingStatus("Video processing completed");
-          setDownloadUrl(`api/download/?path=${message.output_path}`);
+          const encodedPath = encodeURIComponent(message.output_path);
+          setDownloadUrl(`api/download/?path=${encodedPath}`);
           if (wsTimeoutRef.current) {
             clearTimeout(wsTimeoutRef.current);
           }
@@ -152,7 +154,7 @@ export default function Home() {
     if (event.target.files && event.target.files.length > 0) {
       const selectedFile = event.target.files[0];
       if (selectedFile.size > MAX_FILE_SIZE) {
-        alert("File size exceeds the 7MB limit. Please choose a smaller file.");
+        alert("File size exceeds the 100MB limit. Please choose a smaller file.");
         return;
       }
 
@@ -160,8 +162,8 @@ export default function Home() {
       video.preload = 'metadata';
       video.onloadedmetadata = () => {
         window.URL.revokeObjectURL(video.src);
-        if (video.duration > 120) {
-          alert("Video duration exceeds the 2 minutes limit. Please choose a shorter video.");
+        if (video.duration > 300) {
+          alert("Video duration exceeds the 5 minutes limit. Please choose a shorter video.");
           return;
         }
         setFile(selectedFile);
@@ -175,7 +177,7 @@ export default function Home() {
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       const selectedFile = event.dataTransfer.files[0];
       if (selectedFile.size > MAX_FILE_SIZE) {
-        alert("File size exceeds the 7MB limit. Please choose a smaller file.");
+        alert("File size exceeds the 100MB limit. Please choose a smaller file.");
         return;
       }
 
@@ -183,8 +185,8 @@ export default function Home() {
       video.preload = 'metadata';
       video.onloadedmetadata = () => {
         window.URL.revokeObjectURL(video.src);
-        if (video.duration > 120) {
-          alert("Video duration exceeds the 2 minutes limit. Please choose a shorter video.");
+        if (video.duration > 300) {
+          alert("Video duration exceeds the 5 minutes limit. Please choose a shorter video.");
           return;
         }
         setFile(selectedFile);
@@ -332,7 +334,7 @@ export default function Home() {
           <p className=" lg:text-xl">
             {file ? <><b>Selected video</b> {file.name}</> : "Drag & Drop your file here or Tap to choose file"}
           </p>
-          <p className=" text-zinc-100 text-center text-sm lg:text-md  mt-3">Currently supports only .mp4 files &lt; 7 MB and duration &lt; 2 minutes.</p>
+          <p className=" text-zinc-100 text-center text-sm lg:text-md  mt-3">Currently supports only .mp4 files &lt; 100 MB and duration &lt; 5 minutes.</p>
         </div>
         <div className="items-center justify-center flex mt-4">
           <label className="text-zinc-100 checkbox-container">
