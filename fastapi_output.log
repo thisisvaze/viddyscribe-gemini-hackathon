@@ -448,3 +448,29 @@ INFO:     ::ffff:127.0.0.1:0 - "GET /api/check_status?client_id=1723907165976&fi
 INFO:     ::ffff:127.0.0.1:0 - "GET /api/check_status?client_id=1723907165976&file_name=shoes_ad_a38f278d73.mp4 HTTP/1.1" 200 OK
 INFO:     ::ffff:127.0.0.1:0 - "GET /api/download?path=%2Fhome%2Fazureuser%2Fviddyscribe-gemini-hackathon%2Fstatic%2Fvideos%2F1723907165976_shoes_ad_a38f278d73_output.mp4 HTTP/1.1" 200 OK
 INFO:     ::ffff:127.0.0.1:0 - "GET /api/download?path=%2Fhome%2Fazureuser%2Fviddyscribe-gemini-hackathon%2Fstatic%2Fvideos%2F1723907165976_shoes_ad_a38f278d73_output.mp4 HTTP/1.1" 200 OK
+2024-08-17 15:12:11,519 - INFO - WebSocket connection closed for client 1723907165976
+2024-08-17 15:12:11,519 - INFO - WebSocket connection closed for client 1723907165976
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ::ffff:127.0.0.1:0 - "GET /api/.env HTTP/1.1" 404 Not Found
+INFO:     ::ffff:127.0.0.1:0 - "GET /api/.env HTTP/1.1" 404 Not Found
+INFO:     ('127.0.0.1', 33440) - "WebSocket /ws?client_id=1723383293496" [accepted]
+2024-08-17 16:55:35,596 - INFO - WebSocket connection established for client 1723383293496
+INFO:     ('127.0.0.1', 33440) - "WebSocket /ws?client_id=1723383293496" [accepted]
+2024-08-17 16:55:35,596 - INFO - WebSocket connection established for client 1723383293496
+INFO:     connection open
+INFO:     connection open
+2024-08-17 16:55:39,511 - INFO - WebSocket connection closed for client 1723383293496
+2024-08-17 16:55:39,511 - INFO - WebSocket connection closed for client 1723383293496
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 38954) - "WebSocket /ws?client_id=1723910922260" [accepted]
+2024-08-17 17:30:11,025 - INFO - WebSocket connection established for client 1723910922260
+INFO:     ('127.0.0.1', 38954) - "WebSocket /ws?client_id=1723910922260" [accepted]
+2024-08-17 17:30:11,025 - INFO - WebSocket connection established for client 1723910922260
+INFO:     connection open
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+2024-08-17 17:30:31,474 - INFO - WebSocket connection closed for client 1723910922260
+2024-08-17 17:30:31,474 - INFO - WebSocket connection closed for client 1723910922260

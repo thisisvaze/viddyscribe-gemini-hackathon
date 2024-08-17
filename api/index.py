@@ -33,7 +33,7 @@ gckey_path = os.path.join(script_dir, "gckey.json")
 
 # Set the environment variable for Google Cloud authentication
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gckey_path
-
+app_folder_location = "viddyscribe-gemini-hackathon"
 security = HTTPBearer()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -109,7 +109,7 @@ async def check_status(client_id: str, file_name: Optional[str] = None):
         raise HTTPException(status_code=400, detail="file_name query parameter is required")
     try:
         # Check if the output file exists
-        output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file_name.split('.')[0]}_output.mp4"
+        output_path = f"/home/azureuser/{app_folder_location}/static/videos/{client_id}_{file_name.split('.')[0]}_output.mp4"
         if os.path.exists(output_path):
             return {"status": "completed", "output_path": output_path}
         else:
@@ -157,14 +157,14 @@ async def generate_endpoint(
 
     # Check file size
     file_size = await file.read()
-    if len(file_size) > 7 * 1024 * 1024:  # 7MB
-        raise HTTPException(status_code=400, detail="File size exceeds 7MB limit")
+    if len(file_size) > 100 * 1024 * 1024:  # 100MB
+        raise HTTPException(status_code=400, detail="File size exceeds 100MB limit")
     await file.seek(0)  # Reset file pointer after reading
 
     video_path = f"temp/{client_id}_{file.filename}"
-    output_path = f"/home/azureuser/viddyscribe-gemini-hackathon/static/videos/{client_id}_{file.filename.split('.')[0]}_output.mp4"
+    output_path = f"/home/azureuser/{app_folder_location}/static/videos/{client_id}_{file.filename.split('.')[0]}_output.mp4"
     os.makedirs("temp", exist_ok=True)
-    os.makedirs("/home/azureuser/viddyscribe-gemini-hackathon/static/videos", exist_ok=True)
+    os.makedirs(f"/home/azureuser/{app_folder_location}/static/videos", exist_ok=True)
 
     try:
         with open(video_path, "wb") as buffer:
@@ -173,8 +173,8 @@ async def generate_endpoint(
 
         # Check video duration
         video = VideoFileClip(video_path)
-        if video.duration > 120:  # 2 minutes
-            raise HTTPException(status_code=400, detail="Video duration exceeds 2 minutes limit")
+        if video.duration > 300:  # 5 minutes
+            raise HTTPException(status_code=400, detail="Video duration exceeds 5 minutes limit")
 
         # Add the video processing task to background tasks
         task = background_tasks.add_task(process_video, video_path, output_path, client_id, add_bg_music)
@@ -262,8 +262,10 @@ async def process_video(video_path: str, output_path: str, client_id: str, add_b
             
 @app.get("/api/download")
 async def download_file(path: str):
+    # Decode the URL-encoded path
+    decoded_path = os.path.normpath(path)
     # Find the index of "static/videos/" in the provided path
-    start_index = path.find("static/videos/")
+    start_index = decoded_path.find("static/videos/")
     if start_index == -1:
         raise HTTPException(status_code=400, detail="Invalid path")
 
