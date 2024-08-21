@@ -282,6 +282,7 @@ async def main_function(video_path, output_path, add_bg_music):
 
 
 
+
 async def create_final_video_v2(video_path: str, response_body: dict, output_path: str, model_name, add_bg_music : bool):
     logging.info(f"Starting create_final_video_v2 with video_path: {video_path}, output_path: {output_path}, model_name: {model_name}, add_bg_music: {add_bg_music}")
     
@@ -374,7 +375,7 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
                 generated_music_clip = generated_music_clip.volumex((vid_max_volume/generated_music_clip_max_volume)*0.5).audio_fadein(fade_duration).volumex(0.12).audio_fadeout(fade_duration).volumex((vid_max_volume/generated_music_clip_max_volume)*3)
                 
                 combined_audio_clips = [still_clip.audio.volumex(vid_max_volume/max_audio_desc_volume), generated_music_clip.set_start(0)]
-                if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
+                if ts_start_seconds + bg_fade_duration < int(original_audio_clip.duration):
                     logging.info(f"Fading out start audio original track from {ts_start_seconds} to {ts_start_seconds + bg_fade_duration}")
                     faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)
                     combined_audio_clips.append(faded_out_start_audio_original_track.set_start(0))
@@ -388,7 +389,7 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
             else:
                 still_frame_volume = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time).max_volume()
                 combined_audio_clips = [still_clip.audio.volumex(vid_max_volume/max_audio_desc_volume)]
-                if ts_start_seconds + bg_fade_duration < original_audio_clip.duration:
+                if ts_start_seconds + bg_fade_duration < int(original_audio_clip.duration):
                     logging.info(f"Fading out start audio original track from {ts_start_seconds} to {ts_start_seconds + bg_fade_duration}")
                     faded_out_start_audio_original_track = original_audio_clip.subclip(ts_start_seconds, ts_start_seconds + bg_fade_duration).audio_fadeout(bg_fade_duration)
                     combined_audio_clips.append(faded_out_start_audio_original_track.set_start(0))
