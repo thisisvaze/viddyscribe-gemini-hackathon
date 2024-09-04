@@ -66,7 +66,8 @@ class VertexAIUtility():
             return False
                   
     
-    def get_info_from_video(self, video1, inst):
+    def get_info_from_video(self, video_path, inst):
+        video1 = self.load_video(video_path)
         generation_config = {
             "max_output_tokens": 8192,
             "temperature": 0.7,

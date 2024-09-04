@@ -157,8 +157,8 @@ async def generate_endpoint(
 
     # Check file size
     file_size = await file.read()
-    if len(file_size) > 100 * 1024 * 1024:  # 100MB
-        raise HTTPException(status_code=400, detail="File size exceeds 100MB limit")
+    if len(file_size) > 500 * 1024 * 1024:  # 500MB
+        raise HTTPException(status_code=400, detail="File size exceeds 500MB limit")
     await file.seek(0)  # Reset file pointer after reading
 
     video_path = f"temp/{client_id}_{file.filename}"

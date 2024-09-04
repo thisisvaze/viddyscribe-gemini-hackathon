@@ -237,8 +237,13 @@ def get_audio_desc_util(video_path):
     # reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
     # return reformmated_desc
 
-    # Combined prompt
-    response_audio_desc = v.get_info_from_video_curl(video_path, insturctions_combined_format)
+    # # Combined prompt with curl method
+    # response_audio_desc = v.get_info_from_video_curl(video_path, insturctions_combined_format)
+    # reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
+    # return reformmated_desc
+
+    # Combined prompt with VertexAI library
+    response_audio_desc = v.get_info_from_video(video_path, insturctions_combined_format)
     reformmated_desc = v.gemini_llm(prompt =response_audio_desc["description"] , inst = instructions_timestamp_format)
     return reformmated_desc
  
@@ -344,7 +349,7 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
             logging.info(f"Created still clip with duration: {audio_clip.duration}")
 
             if ts_start_seconds == 0: 
-                e_time = ts_start_seconds + 5  
+                e_time = ts_start_seconds + 10 
             else:
                 e_time = ts_start_seconds
 
@@ -358,7 +363,7 @@ async def create_final_video_v2(video_path: str, response_body: dict, output_pat
 
             if add_bg_music:
                 temp_audio_path = "temp_audio.wav"
-                subclip = original_audio_clip.subclip(max(ts_start_seconds - 5, 0), e_time)
+                subclip = original_audio_clip.subclip(max(ts_start_seconds - 10, 0), e_time)
                 subclip.write_audiofile(temp_audio_path)
                 subclip = AudioFileClip(temp_audio_path)
                 logging.info(f"Generated temporary audio file for background music: {temp_audio_path}")

@@ -12,6 +12,12 @@ const generateHash = (input: string) => {
   return crypto.createHash('sha256').update(input).digest('hex').slice(0, 10);
 };
 
+
+const sampleVideos = [
+  { path: '/static/test_videos/battery.mp4', name: 'battery.mp4' },
+  { path: '/static/test_videos/smoothievideo.mp4', name: 'smoothievideo.mp4' }
+];
+
 const getClientId = () => {
   let clientId = Cookies.get('clientId');
   if (!clientId) {
@@ -25,16 +31,19 @@ const clientId = getClientId(); // Retrieve or generate client ID
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
+  const [selectedSampleVideo, setSelectedSampleVideo] = useState<string | null>(null); //
   const [loading, setLoading] = useState(false);
+  const [sampleLoading, setSampleLoading] = useState(false); // New state for sample video loading
   const [lastUploadedFileName, setLastUploadedFileName] = useState<string | null>(null);
   const lastUploadedFileNameRef = useRef<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [processingStatus, setProcessingStatus] = useState("");
-  const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
+  const MAX_FILE_SIZE = 500 * 1024 * 1024; // 100MB
   const [addBgMusic, setAddBgMusic] = useState(false);
   const socketRef = useRef<WebSocket | null>(null); // Use ref to store WebSocket instance
   const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null); // Use ref to store polling interval
   const wsTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Use ref to store WebSocket timeout
+  const [preloadedVideos, setPreloadedVideos] = useState<{ [key: string]: File }>({});
 
   useEffect(() => {
     const isProd = process.env.NODE_ENV === 'production';
@@ -42,6 +51,22 @@ export default function Home() {
     const reconnectInterval = 5000; // 5 seconds
     const pollingInterval = 5000; // 5 seconds
     const wsTimeout = 30000; // 10 seconds
+
+    const preloadVideos = async () => {
+      const videoFiles: { [key: string]: File } = {};
+      for (const video of sampleVideos) {
+        try {
+          const response = await fetch(video.path);
+          const blob = await response.blob();
+          const file = new File([blob], video.name, { type: 'video/mp4' });
+          videoFiles[video.name] = file;
+        } catch (error) {
+          console.error("Error preloading video:", video.name, error);
+        }
+      }
+      setPreloadedVideos(videoFiles);
+    };
+    preloadVideos();
 
     const checkVideoStatus = async () => {
       if (!lastUploadedFileNameRef.current) {
@@ -57,7 +82,9 @@ export default function Home() {
           setLoading(false);
           setProcessingStatus("Video processing completed");
           const encodedPath = encodeURIComponent(output_path);
-          setDownloadUrl(`api/download/?path=${encodedPath}`);
+          setTimeout(() => {
+            setDownloadUrl(`api/download/?path=${encodeURIComponent(output_path)}`);
+          }, 3000); 
           if (pollingIntervalRef.current) {
             clearInterval(pollingIntervalRef.current);
           }
@@ -105,7 +132,9 @@ export default function Home() {
           setLoading(false);
           setProcessingStatus("Video processing completed");
           const encodedPath = encodeURIComponent(message.output_path);
-          setDownloadUrl(`api/download/?path=${encodedPath}`);
+          setTimeout(() => {
+            setDownloadUrl(`api/download/?path=${encodedPath}`);
+          }, 3000); 
           if (wsTimeoutRef.current) {
             clearTimeout(wsTimeoutRef.current);
           }
@@ -147,6 +176,7 @@ export default function Home() {
         clearTimeout(wsTimeoutRef.current);
       }
     };
+    
   }, [lastUploadedFileName]);
 
 
@@ -154,7 +184,7 @@ export default function Home() {
     if (event.target.files && event.target.files.length > 0) {
       const selectedFile = event.target.files[0];
       if (selectedFile.size > MAX_FILE_SIZE) {
-        alert("File size exceeds the 100MB limit. Please choose a smaller file.");
+        alert("File size exceeds the 500MB limit. Please choose a smaller file.");
         return;
       }
 
@@ -177,7 +207,7 @@ export default function Home() {
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       const selectedFile = event.dataTransfer.files[0];
       if (selectedFile.size > MAX_FILE_SIZE) {
-        alert("File size exceeds the 100MB limit. Please choose a smaller file.");
+        alert("File size exceeds the 500MB limit. Please choose a smaller file.");
         return;
       }
 
@@ -260,54 +290,69 @@ export default function Home() {
     }
   };
 
-  const handleSampleVideoSelect = (videoPath: string, videoName: string) => {
-    fetch(videoPath)
-      .then(response => response.blob())
-      .then(blob => {
-        const file = new File([blob], videoName, { type: 'video/mp4' });
-        setFile(file);
-      })
-      .catch(error => console.error("Error loading sample video:", error));
-  };
 
+
+  const handleSampleVideoSelect = (videoName: string) => {
+    const file = preloadedVideos[videoName];
+    if (file) {
+      setFile(file);
+      setSelectedSampleVideo(videoName);
+    } else {
+      console.error("Sample video not preloaded:", videoName);
+    }
+  };
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-12  px-4 lg:px-24 pt-6 lg:pt-12 pb-12 lg:pb-24">
-     <div className="flex flex-row items-center">
-      
-      <div className="items-center justify-center">
-        <div className="flex flex-row items-center justify-center gap-2">
-        <Image src="/viddy_logo.png" alt="ViddyScribe Logo" width={90} height={90} className=" h-12 w-12" />
-        <p className="text-4xl text-zinc-100 text-center font-bold">ViddyScribe</p>
+      <div className="flex flex-row items-center">
+        <div className="items-center justify-center">
+          <div className="flex flex-row items-center justify-center gap-2">
+            <Image src="/viddy_logo.png" alt="ViddyScribe Logo" width={90} height={90} className=" h-12 w-12" />
+            <p className="text-4xl text-zinc-100 text-center font-bold">ViddyScribe</p>
+          </div>
+          <p className="text-sm lg:text-lg text-zinc-100/50 mt-1">Add Audio description to videos with AI</p>
         </div>
-        <p className="text-sm lg:text-lg text-zinc-100/50 mt-1">Add Audio description to videos with AI</p>
       </div>
-    </div>
-
-      
 
       <div className="max-w-xl w-full">
-      <div className="flex flex-col items-center my-10">
+        <div className="flex flex-col items-center my-10">
           <p className="text-zinc-400 text-center mb-4">Choose a sample video or try your own</p>
           <div className="grid grid-cols-2 gap-4">
             <div
-              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'shoes_ad.mp4' ? 'bg-zinc-700' : 'bg-zinc-800'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              onClick={() => !loading && handleSampleVideoSelect('/static/test_videos/shoes_ad.mp4', 'shoes_ad.mp4')}
+              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'battery.mp4' ? 'bg-zinc-700' : 'bg-zinc-900 hover:bg-zinc-800'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={() => !loading && handleSampleVideoSelect('battery.mp4')}
             >
               <video className="w-full rounded-lg" controls>
-                <source src="/static/test_videos/shoes_ad.mp4" type="video/mp4" />
+                <source src="/static/test_videos/battery.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <p className="text-zinc-100 mt-2">Shoes Ad</p>
+              <p className="text-zinc-100 mt-2">
+                <input
+                  type="checkbox"
+                  checked={selectedSampleVideo === 'battery.mp4'}
+                  readOnly
+                  className={`mr-2 ${selectedSampleVideo === 'battery.mp4' ? 'text-violet-500' : ''}`}
+                />
+                Battery
+              </p>
             </div>
             <div
-              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'all_star.mp4' ? 'bg-zinc-700' : 'bg-zinc-800'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              onClick={() => !loading && handleSampleVideoSelect('/static/test_videos/all_star.mp4', 'all_star.mp4')}
+              className={`p-4 rounded-lg text-center cursor-pointer ${file?.name === 'smoothievideo.mp4' ? 'bg-zinc-700' : 'bg-zinc-900 hover:bg-zinc-800'}  ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={() => !loading && handleSampleVideoSelect('smoothievideo.mp4')}
             >
               <video className="w-full rounded-lg" controls>
-                <source src="/static/test_videos/all_star.mp4" type="video/mp4" />
+                <source src="/static/test_videos/smoothievideo.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <p className="text-zinc-100 mt-2">All Star</p>
+              <p className="text-zinc-100 mt-2">
+                <input
+                  type="checkbox"
+                  checked={selectedSampleVideo === 'smoothievideo.mp4'}
+                  readOnly
+                  className={`mr-2 ${selectedSampleVideo === 'smoothievideo.mp4' ? 'text-violet-500' : ''}`}
+                />
+                Smoothie
+              </p>
             </div>
           </div>
         </div>
@@ -332,9 +377,9 @@ export default function Home() {
             disabled={loading}
           />
           <p className=" lg:text-xl">
-            {file ? <><b>Selected video</b> {file.name}</> : "Drag & Drop your file here or Tap to choose file"}
+            {file ? <><b>Selected video</b> {file.name}</> : "Drag & Drop or Tap here to choose file"}
           </p>
-          <p className=" text-zinc-100 text-center text-sm lg:text-md  mt-3">Currently supports only .mp4 files &lt; 100 MB and duration &lt; 5 minutes.</p>
+          <p className=" text-zinc-100 text-center text-sm lg:text-md  mt-3">Currently supports only .mp4 files &lt; 500 MB and duration &lt; 5 minutes.</p>
         </div>
         <div className="items-center justify-center flex mt-4">
           <label className="text-zinc-100 checkbox-container">
