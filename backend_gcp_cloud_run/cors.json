@@ -1,0 +1,15 @@
+[
+  {
+    "origin": [
+      "http://localhost:3000",
+      "https://dezcribe-frontend.vercel.app",
+      "https://app.dezcribe.com",
+      "https://testing-5tgfcs.dezcribe.com",
+      "https://testing-5tgfcs.viddyscribe.com",
+      "https://app.viddyscribe.com"
+    ],
+    "method": ["GET", "HEAD", "PUT", "POST", "DELETE"],
+    "responseHeader": ["Content-Type", "Authorization"],
+    "maxAgeSeconds": 3600
+  }
+]

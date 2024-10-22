@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-white; /* Changed from bg-zinc-900 to bg-slate-700 */
+  color: rgb(var(--foreground-rgb));
+}
+
+/* New button styles */
+.btn {
+  @apply p-2 rounded text-white cursor-pointer;
+}
+
+.btn-choose-file {
+  @apply bg-white text-gray-700 hover:bg-gray-400 border border-gray-300;
+}
+
+
+.btn-upload {
+  @apply bg-violet-500 hover:bg-violet-700 disabled:opacity-40;
+  &:disabled:hover {
+    @apply bg-violet-500; /* Maintain the same background color as the non-hover state */
+  }
+}
+
+.btn-download {
+  @apply bg-green-500 hover:bg-green-700;
+  &:disabled:hover {
+    @apply bg-green-500; /* Maintain the same background color as the non-hover state */
+  }
+}
+.blink-animation {
+  animation: blink 3s infinite;
+}
+
+.checkbox {
+  @apply accent-violet-500;
+  width: 20px; /* Adjust the size as needed */
+  height: 20px; /* Adjust the size as needed */
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
